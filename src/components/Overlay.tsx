@@ -14,9 +14,10 @@ interface Message {
 interface OverlayProps {
   selectedPart: string | null;
   onClose: () => void;
+  gender: "male" | "female";
 }
 
-export default function Overlay({ selectedPart, onClose }: OverlayProps) {
+export default function Overlay({ selectedPart, onClose, gender }: OverlayProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,7 +30,8 @@ export default function Overlay({ selectedPart, onClose }: OverlayProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
           messages: msgs, 
-          selectedPart: part 
+          selectedPart: part,
+          gender: gender
         }),
       });
 

@@ -3,7 +3,7 @@ import Groq from 'groq-sdk';
 
 export async function POST(req: Request) {
   try {
-    const { messages, selectedPart } = await req.json();
+    const { messages, selectedPart, gender } = await req.json();
     const apiKey = process.env.GROQ_API_KEY;
 
     // Mock response if no API key
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
         role: 'assistant',
         content: `**[MOCK MODE - No Groq API Key]**
         
-I see you have selected the **${selectedPart}**. 
+I see you have selected the **${selectedPart}** on the **${gender}** body. 
 
 Since I am running in mock mode, I can tell you that common issues here include muscle strain or inflammation. 
 
@@ -28,9 +28,9 @@ Since I am running in mock mode, I can tell you that common issues here include 
     // Construct a prompt that includes context
     const systemPrompt = `
       You are an advanced medical AI assistant for a 3D health application.
-      The user has selected the "${selectedPart}" on the 3D body model.
+      The user has selected the "${selectedPart}" on a ${gender} 3D body model.
       
-      Your goal is to provide helpful, accurate, and concise medical information related to this body part.
+      Your goal is to provide helpful, accurate, and concise medical information related to this body part, specifically considering the biological and physiological differences relevant to a ${gender}.
       If the user describes symptoms, offer potential causes and general advice, but ALWAYS include a disclaimer.
       
       Tone: Professional, empathetic, and clear.

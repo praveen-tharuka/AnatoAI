@@ -9,6 +9,7 @@ import { BodyModel } from "./BodyModel";
 interface SceneProps {
   onSelectPart: (part: string) => void;
   selectedPart: string | null;
+  gender: "male" | "female";
 }
 
 function Controls() {
@@ -46,7 +47,7 @@ function Controls() {
   );
 }
 
-export default function Scene({ onSelectPart, selectedPart }: SceneProps) {
+export default function Scene({ onSelectPart, selectedPart, gender }: SceneProps) {
   return (
     <div className="w-full h-full bg-gradient-to-b from-slate-900 to-slate-800">
       <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
@@ -55,7 +56,7 @@ export default function Scene({ onSelectPart, selectedPart }: SceneProps) {
           <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
           <pointLight position={[-10, -10, -10]} intensity={0.5} color="#00f0ff" />
           
-          <BodyModel onSelectPart={onSelectPart} selectedPart={selectedPart} />
+          <BodyModel onSelectPart={onSelectPart} selectedPart={selectedPart} gender={gender} />
           
           {/* Moved shadows down to feet level (-1.6) to avoid cutting through the body */}
           <ContactShadows position={[0, -1.6, 0]} resolution={1024} scale={10} blur={1} opacity={0.5} far={10} color="#000000" />

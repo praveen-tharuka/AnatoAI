@@ -23,41 +23,41 @@ interface BodyPartConfig {
 // [x, y, z] - Increase these values to move pins further out from the body.
 const FULL_BODY_PARTS: BodyPartConfig[] = [
   // --- Head Region ---
-  { name: "Head", type: "sphere", position: [0, 1.65, 0], args: [0.25, 32, 32], pinOffset: [0, 0.15, 0.28] },
-  { name: "Left Eye", type: "sphere", position: [0.06, 1.55, 0], args: [0.05, 16, 16], pinOffset: [0, 0, 0.28] },
-  { name: "Right Eye", type: "sphere", position: [-0.06, 1.55, 0], args: [0.05, 16, 16], pinOffset: [0, 0, 0.28] },
-  { name: "Left Ear", type: "sphere", position: [0.15, 1.55, -0.05], args: [0.05, 16, 16], pinOffset: [0.18, 0, 0] },
-  { name: "Right Ear", type: "sphere", position: [-0.15, 1.55, -0.05], args: [0.05, 16, 16], pinOffset: [-0.18, 0, 0] },
-  { name: "Mouth", type: "sphere", position: [0, 1.45, 0], args: [0.08, 16, 16], pinOffset: [0, 0, 0.28] },
+  { name: "Head", type: "sphere", position: [0, 1.65, 0], args: [0.25, 32, 32], pinOffset: [0, 0.15, 0.35] },
+  { name: "Left Eye", type: "sphere", position: [0.06, 1.55, 0], args: [0.05, 16, 16], pinOffset: [0, 0, 0.32] },
+  { name: "Right Eye", type: "sphere", position: [-0.06, 1.55, 0], args: [0.05, 16, 16], pinOffset: [0, 0, 0.32] },
+  { name: "Left Ear", type: "sphere", position: [0.15, 1.55, -0.05], args: [0.05, 16, 16], pinOffset: [0.22, 0, 0] },
+  { name: "Right Ear", type: "sphere", position: [-0.15, 1.55, -0.05], args: [0.05, 16, 16], pinOffset: [-0.22, 0, 0] },
+  { name: "Mouth", type: "sphere", position: [0, 1.45, 0], args: [0.08, 16, 16], pinOffset: [0, 0, 0.32] },
   
-  { name: "Neck", type: "capsule", position: [0, 1.3, 0], args: [0.1, 0.2, 4, 8], pinOffset: [0, 0, 0.18] },
+  { name: "Neck", type: "capsule", position: [0, 1.3, 0], args: [0.1, 0.2, 4, 8], pinOffset: [0, 0, 0.22] },
   
   // --- Torso ---
-  { name: "Chest", type: "box", position: [0, 1.0, 0], args: [0.6, 0.6, 0.3], pinOffset: [0, 0, 0.25] },
-  { name: "Abdomen", type: "box", position: [0, 0.4, 0], args: [0.5, 0.6, 0.28], pinOffset: [0, 0, 0.28] },
+  { name: "Chest", type: "box", position: [0, 1.0, 0], args: [0.6, 0.6, 0.3], pinOffset: [0, 0, 0.35] },
+  { name: "Abdomen", type: "box", position: [0, 0.4, 0], args: [0.5, 0.6, 0.28], pinOffset: [0, 0, 0.35] },
   
-  { name: "Upper Back", type: "box", position: [0, 1.1, 0], args: [0.6, 0.6, 0.3], pinOffset: [0, 0, -0.28] },
-  { name: "Lower Back", type: "box", position: [0, 0.5, 0], args: [0.5, 0.5, 0.28], pinOffset: [0, 0, -0.28] },
+  { name: "Upper Back", type: "box", position: [0, 1.1, 0], args: [0.6, 0.6, 0.3], pinOffset: [0, 0, -0.40] },
+  { name: "Lower Back", type: "box", position: [0, 0.5, 0], args: [0.5, 0.5, 0.28], pinOffset: [0, 0, -0.40] },
   
   // --- Arms ---
-  { name: "Left Shoulder", type: "sphere", position: [0.4, 1.2, 0], args: [0.15, 16, 16], pinOffset: [0, 0, 0.20] },
-  { name: "Left Upper Arm", type: "capsule", position: [0.55, 0.9, 0], args: [0.1, 0.5, 4, 8], rotation: [0, 0, -0.2], pinOffset: [0, 0, 0.15] },
-  { name: "Left Forearm", type: "capsule", position: [0.85, 0.35, 0], args: [0.09, 0.5, 4, 8], rotation: [0, 0, -0.35], pinOffset: [0, 0, 0.15] },
-  { name: "Left Hand", type: "box", position: [1.0, 0.05, 0], args: [0.15, 0.2, 0.1], rotation: [0, 0, -0.35], pinOffset: [0, 0, 0.12] },
+  { name: "Left Shoulder", type: "sphere", position: [0.4, 1.2, 0], args: [0.15, 16, 16], pinOffset: [0, 0, 0.25] },
+  { name: "Left Upper Arm", type: "capsule", position: [0.55, 0.9, 0], args: [0.1, 0.5, 4, 8], rotation: [0, 0, -0.2], pinOffset: [0, 0, 0.20] },
+  { name: "Left Forearm", type: "capsule", position: [0.85, 0.35, 0], args: [0.09, 0.5, 4, 8], rotation: [0, 0, -0.35], pinOffset: [0, 0, 0.20] },
+  { name: "Left Hand", type: "box", position: [1.0, 0.05, 0], args: [0.15, 0.2, 0.1], rotation: [0, 0, -0.35], pinOffset: [0, 0, 0.18] },
 
-  { name: "Right Shoulder", type: "sphere", position: [-0.4, 1.2, 0], args: [0.15, 16, 16], pinOffset: [0, 0, 0.20] },
-  { name: "Right Upper Arm", type: "capsule", position: [-0.55, 0.9, 0], args: [0.1, 0.5, 4, 8], rotation: [0, 0, 0.2], pinOffset: [0, 0, 0.15] },
-  { name: "Right Forearm", type: "capsule", position: [-0.85, 0.35, 0], args: [0.09, 0.5, 4, 8], rotation: [0, 0, 0.35], pinOffset: [0, 0, 0.15] },
-  { name: "Right Hand", type: "box", position: [-1.0, 0.05, 0], args: [0.15, 0.2, 0.1], rotation: [0, 0, 0.35], pinOffset: [0, 0, 0.12] },
+  { name: "Right Shoulder", type: "sphere", position: [-0.4, 1.2, 0], args: [0.15, 16, 16], pinOffset: [0, 0, 0.25] },
+  { name: "Right Upper Arm", type: "capsule", position: [-0.55, 0.9, 0], args: [0.1, 0.5, 4, 8], rotation: [0, 0, 0.2], pinOffset: [0, 0, 0.20] },
+  { name: "Right Forearm", type: "capsule", position: [-0.85, 0.35, 0], args: [0.09, 0.5, 4, 8], rotation: [0, 0, 0.35], pinOffset: [0, 0, 0.20] },
+  { name: "Right Hand", type: "box", position: [-1.0, 0.05, 0], args: [0.15, 0.2, 0.1], rotation: [0, 0, 0.35], pinOffset: [0, 0, 0.18] },
 
   // --- Legs ---
-  { name: "Left Thigh", type: "capsule", position: [0.25, -0.3, 0], args: [0.15, 0.7, 4, 8], pinOffset: [0, 0, 0.20] },
-  { name: "Left Shin", type: "capsule", position: [0.25, -1.1, 0], args: [0.12, 0.7, 4, 8], pinOffset: [0, 0, 0.18] },
-  { name: "Left Foot", type: "box", position: [0.25, -1.5, 0.1], args: [0.15, 0.1, 0.3], pinOffset: [0, 0, 0.20] },
+  { name: "Left Thigh", type: "capsule", position: [0.25, -0.3, 0], args: [0.15, 0.7, 4, 8], pinOffset: [0, 0, 0.28] },
+  { name: "Left Shin", type: "capsule", position: [0.25, -1.1, 0], args: [0.12, 0.7, 4, 8], pinOffset: [0, 0, 0.25] },
+  { name: "Left Foot", type: "box", position: [0.25, -1.5, 0.1], args: [0.15, 0.1, 0.3], pinOffset: [0, 0, 0.25] },
   
-  { name: "Right Thigh", type: "capsule", position: [-0.25, -0.3, 0], args: [0.15, 0.7, 4, 8], pinOffset: [0, 0, 0.20] },
-  { name: "Right Shin", type: "capsule", position: [-0.25, -1.1, 0], args: [0.12, 0.7, 4, 8], pinOffset: [0, 0, 0.18] },
-  { name: "Right Foot", type: "box", position: [-0.25, -1.5, 0.1], args: [0.15, 0.1, 0.3], pinOffset: [0, 0, 0.20] },
+  { name: "Right Thigh", type: "capsule", position: [-0.25, -0.3, 0], args: [0.15, 0.7, 4, 8], pinOffset: [0, 0, 0.28] },
+  { name: "Right Shin", type: "capsule", position: [-0.25, -1.1, 0], args: [0.12, 0.7, 4, 8], pinOffset: [0, 0, 0.25] },
+  { name: "Right Foot", type: "box", position: [-0.25, -1.5, 0.1], args: [0.15, 0.1, 0.3], pinOffset: [0, 0, 0.25] },
 ];
 
 // --- Components ---
@@ -145,13 +145,16 @@ const BodyPart: React.FC<BodyPartProps> = ({
 interface BodyModelProps {
   onSelectPart: (part: string) => void;
   selectedPart: string | null;
+  gender: "male" | "female";
 }
 
 export const BodyModel: React.FC<BodyModelProps> = ({
   onSelectPart,
   selectedPart,
+  gender,
 }) => {
-  const { scene: originalScene, animations } = useGLTF('/models/human.glb');
+  const modelPath = gender === "male" ? "/models/male-body.glb" : "/models/female-body.glb";
+  const { scene: originalScene, animations } = useGLTF(modelPath);
   // Clone the scene to avoid mutating the cached original
   const scene = useMemo(() => SkeletonUtils.clone(originalScene), [originalScene]);
   const { actions } = useAnimations(animations, scene);
