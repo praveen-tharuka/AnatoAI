@@ -24,6 +24,15 @@ export default function Home() {
     }
   };
 
+  const handlePartSelect = (partName: string) => {
+    if (partName === "Head") {
+      setViewMode("head");
+      setSelectedPart(null);
+    } else {
+      setSelectedPart(partName);
+    }
+  };
+
   return (
     <main className="relative w-full h-screen overflow-hidden bg-slate-50">
       {/* Navbar / Header */}
@@ -100,7 +109,7 @@ export default function Home() {
 
       {/* 3D Scene */}
       <div className="absolute inset-0 z-0">
-        <Scene onSelectPart={setSelectedPart} selectedPart={selectedPart} gender={gender} viewMode={viewMode} />
+        <Scene onSelectPart={handlePartSelect} selectedPart={selectedPart} gender={gender} viewMode={viewMode} />
       </div>
 
       {/* Instructions / Hint */}
