@@ -12,52 +12,25 @@ interface BodyPartConfig {
   type: "sphere" | "capsule" | "box";
   position: [number, number, number];
   args: number[];
-  pinOffset: [number, number, number];
   rotation?: [number, number, number];
 }
 
 // --- Configuration Data ---
 
-// ADJUST PIN POSITIONS HERE
-// The 'pinOffset' property controls where the pin appears relative to the body part's center.
-// [x, y, z] - Increase these values to move pins further out from the body.
 export const FULL_BODY_PARTS: BodyPartConfig[] = [
   // --- Head Region ---
-  { name: "Head", type: "sphere", position: [0, 1.65, 0], args: [0.25, 32, 32], pinOffset: [0, 0.15, 0.35] },
-  { name: "Left Eye", type: "sphere", position: [0.06, 1.55, 0], args: [0.05, 16, 16], pinOffset: [0, 0, 0.32] },
-  { name: "Right Eye", type: "sphere", position: [-0.06, 1.55, 0], args: [0.05, 16, 16], pinOffset: [0, 0, 0.32] },
-  { name: "Left Ear", type: "sphere", position: [0.15, 1.55, -0.05], args: [0.05, 16, 16], pinOffset: [0.22, 0, 0] },
-  { name: "Right Ear", type: "sphere", position: [-0.15, 1.55, -0.05], args: [0.05, 16, 16], pinOffset: [-0.22, 0, 0] },
-  { name: "Mouth", type: "sphere", position: [0, 1.45, 0], args: [0.08, 16, 16], pinOffset: [0, 0, 0.32] },
-  
-  { name: "Neck", type: "capsule", position: [0, 1.3, 0], args: [0.1, 0.2, 4, 8], pinOffset: [0, 0, 0.22] },
+  { name: "Head", type: "sphere", position: [0, 1.5, 0], args: [0.25, 32, 32] },
   
   // --- Torso ---
-  { name: "Chest", type: "box", position: [0, 1.0, 0], args: [0.6, 0.6, 0.3], pinOffset: [0, 0, 0.35] },
-  { name: "Abdomen", type: "box", position: [0, 0.4, 0], args: [0.5, 0.6, 0.28], pinOffset: [0, 0, 0.35] },
+  { name: "Torso", type: "box", position: [0, 0.7, 0], args: [0.55, 1.2, 0.3] },
   
-  { name: "Upper Back", type: "box", position: [0, 1.1, 0], args: [0.6, 0.6, 0.3], pinOffset: [0, 0, -0.40] },
-  { name: "Lower Back", type: "box", position: [0, 0.5, 0], args: [0.5, 0.5, 0.28], pinOffset: [0, 0, -0.40] },
-  
-  // --- Arms ---
-  { name: "Left Shoulder", type: "sphere", position: [0.4, 1.2, 0], args: [0.15, 16, 16], pinOffset: [0, 0, 0.25] },
-  { name: "Left Upper Arm", type: "capsule", position: [0.55, 0.9, 0], args: [0.1, 0.5, 4, 8], rotation: [0, 0, -0.2], pinOffset: [0, 0, 0.20] },
-  { name: "Left Forearm", type: "capsule", position: [0.85, 0.35, 0], args: [0.09, 0.5, 4, 8], rotation: [0, 0, -0.35], pinOffset: [0, 0, 0.20] },
-  { name: "Left Hand", type: "box", position: [1.0, 0.05, 0], args: [0.15, 0.2, 0.1], rotation: [0, 0, -0.35], pinOffset: [0, 0, 0.18] },
-
-  { name: "Right Shoulder", type: "sphere", position: [-0.4, 1.2, 0], args: [0.15, 16, 16], pinOffset: [0, 0, 0.25] },
-  { name: "Right Upper Arm", type: "capsule", position: [-0.55, 0.9, 0], args: [0.1, 0.5, 4, 8], rotation: [0, 0, 0.2], pinOffset: [0, 0, 0.20] },
-  { name: "Right Forearm", type: "capsule", position: [-0.85, 0.35, 0], args: [0.09, 0.5, 4, 8], rotation: [0, 0, 0.35], pinOffset: [0, 0, 0.20] },
-  { name: "Right Hand", type: "box", position: [-1.0, 0.05, 0], args: [0.15, 0.2, 0.1], rotation: [0, 0, 0.35], pinOffset: [0, 0, 0.18] },
+  // --- Hands (Arms) ---
+  { name: "Left Hand", type: "box", position: [0.70, 0.60, -0.10], args: [0.3, 1.1, 0.3], rotation: [0, 0, -0.4] },
+  { name: "Right Hand", type: "box", position: [-0.70, 0.60, -0.10], args: [0.3, 1.1, 0.3], rotation: [0, 0, 0.4] },
 
   // --- Legs ---
-  { name: "Left Thigh", type: "capsule", position: [0.25, -0.3, 0], args: [0.15, 0.7, 4, 8], pinOffset: [0, 0, 0.28] },
-  { name: "Left Shin", type: "capsule", position: [0.25, -1.1, 0], args: [0.12, 0.7, 4, 8], pinOffset: [0, 0, 0.25] },
-  { name: "Left Foot", type: "box", position: [0.25, -1.5, 0.1], args: [0.15, 0.1, 0.3], pinOffset: [0, 0, 0.25] },
-  
-  { name: "Right Thigh", type: "capsule", position: [-0.25, -0.3, 0], args: [0.15, 0.7, 4, 8], pinOffset: [0, 0, 0.28] },
-  { name: "Right Shin", type: "capsule", position: [-0.25, -1.1, 0], args: [0.12, 0.7, 4, 8], pinOffset: [0, 0, 0.25] },
-  { name: "Right Foot", type: "box", position: [-0.25, -1.5, 0.1], args: [0.15, 0.1, 0.3], pinOffset: [0, 0, 0.25] },
+  { name: "Left Leg", type: "capsule", position: [0.25, -0.7, 0], args: [0.15, 1.5, 4, 8] },
+  { name: "Right Leg", type: "capsule", position: [-0.25, -0.7, 0], args: [0.15, 1.5, 4, 8] },
 ];
 
 // --- Components ---
@@ -70,7 +43,6 @@ interface BodyPartProps {
   selectedPart: string | null;
   type: "capsule" | "sphere" | "box";
   rotation?: [number, number, number];
-  pinOffset?: [number, number, number];
 }
 
 const BodyPart: React.FC<BodyPartProps> = ({
@@ -81,55 +53,57 @@ const BodyPart: React.FC<BodyPartProps> = ({
   selectedPart,
   type,
   rotation = [0, 0, 0],
-  pinOffset = [0, 0, 0.15], 
 }) => {
   const [hovered, setHover] = useState(false);
   const isSelected = selectedPart === name;
 
   return (
     <group position={position} rotation={new THREE.Euler(...rotation)}>
-      {/* The "Pin" Visual */}
-      <group position={pinOffset}>
-        {/* Pin Head */}
-        <mesh 
-          onClick={(e) => {
-            e.stopPropagation();
-            onSelect(name);
-          }}
-          onPointerOver={(e) => {
-            e.stopPropagation();
-            setHover(true);
-          }}
-          onPointerOut={(e) => {
-            e.stopPropagation();
-            setHover(false);
-          }}
-        >
-          {/* Small pin size */}
-          <sphereGeometry args={[0.025, 16, 16]} />
-          <meshStandardMaterial 
-            color={isSelected ? "#f43f5e" : (hovered ? "#2dd4bf" : "#ffffff")} 
-            emissive={isSelected ? "#f43f5e" : (hovered ? "#2dd4bf" : "#000000")}
-            emissiveIntensity={0.8}
-            toneMapped={false}
-          />
-        </mesh>
+      {/* Interactive Volume (Hitbox) - Invisible but clickable */}
+      <mesh
+        onClick={(e) => {
+          e.stopPropagation();
+          onSelect(name);
+        }}
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          setHover(true);
+        }}
+        onPointerOut={(e) => {
+          e.stopPropagation();
+          setHover(false);
+        }}
+      >
+        {type === "box" && <boxGeometry args={args as [number, number, number]} />}
+        {type === "sphere" && <sphereGeometry args={args as [number, number, number]} />}
+        {type === "capsule" && <capsuleGeometry args={args as [number, number, number, number]} />}
         
-        {/* Pulse Effect for Selected */}
-        {isSelected && (
-           <mesh>
-             <sphereGeometry args={[0.04, 16, 16]} />
-             <meshBasicMaterial color="#f43f5e" transparent opacity={0.3} />
-           </mesh>
-        )}
-      </group>
+        <meshBasicMaterial
+          transparent
+          opacity={0.0} // Fully invisible hitbox
+          depthWrite={false}
+        />
+      </mesh>
+
+      {/* Center Pinpoint Marker (Always visible inside) */}
+      <mesh>
+        <sphereGeometry args={[0.03, 16, 16]} />
+        <meshBasicMaterial 
+            color={isSelected ? "#f43f5e" : (hovered ? "#2dd4bf" : "#ffffff")}
+            transparent 
+            opacity={0.8} 
+            depthTest={false} // Visible through the body
+            depthWrite={false}
+        />
+      </mesh>
       
       {/* Label */}
       {(hovered || isSelected) && (
-        <Html distanceFactor={8} position={[pinOffset[0], pinOffset[1] + 0.1, pinOffset[2]]}>
+        <Html distanceFactor={8} position={[0, 0, 0]} style={{ pointerEvents: 'none' }}>
           <div className={`
             px-3 py-1.5 rounded-lg text-sm font-bold shadow-lg backdrop-blur-md
             transform -translate-x-1/2 -translate-y-full transition-all duration-200
+            mb-4
             ${isSelected 
               ? "bg-rose-500/90 text-white border border-rose-400" 
               : "bg-slate-900/80 text-teal-300 border border-teal-500/30"}
@@ -258,7 +232,6 @@ export const BodyModel: React.FC<BodyModelProps> = ({
             name={part.name}
             type={part.type}
             rotation={part.rotation}
-            pinOffset={part.pinOffset}
             onSelect={onSelectPart}
             selectedPart={selectedPart}
           />

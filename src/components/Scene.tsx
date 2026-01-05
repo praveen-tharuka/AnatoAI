@@ -1,7 +1,7 @@
 "use client";
 
-import React, { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import React, { Suspense, useRef, useEffect } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Environment, ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
 import { BodyModel } from "./BodyModel";
@@ -13,14 +13,38 @@ interface SceneProps {
   viewMode: "full" | "head";
 }
 
-function Controls() {
+interface ControlsProps {
+  viewMode: "full" | "head";
+  gender: "male" | "female";
+}
+
+function Controls({ viewMode, gender }: ControlsProps) {
   const controlsRef = useRef<any>(null);
+  const { camera } = useThree();
+
+  // Reset camera and controls when viewMode or gender changes
+  useEffect(() => {
+    if (controlsRef.current) {
+      const controls = controlsRef.current;
+      
+      if (viewMode === 'head') {
+        // Head View: Default to "lowest zoom level" (furthest distance)
+        camera.position.set(0, 0, 6.0);
+        controls.target.set(0, 0, 0);
+      } else {
+        // Full Body: Default to mid-range (5 is mid of 2 and 8)
+        camera.position.set(0, 1, 5);
+        controls.target.set(0, 0, 0);
+      }
+      
+      controls.update();
+    }
+  }, [viewMode, gender, camera]);
 
   useFrame(() => {
     if (controlsRef.current) {
       const controls = controlsRef.current;
       // Clamp the target to keep the model within the "window area"
-      // This prevents panning too far away from the center
       const limit = 1.5;
       controls.target.x = THREE.MathUtils.clamp(controls.target.x, -limit, limit);
       controls.target.y = THREE.MathUtils.clamp(controls.target.y, -limit, limit);
@@ -28,12 +52,17 @@ function Controls() {
     }
   });
 
+  // Dynamic zoom limits based on viewMode
+  // Head: Min 2.5 (Close), Max 6.0 (Far)
+  const minDistance = viewMode === 'head' ? 2.5 : 2;
+  const maxDistance = viewMode === 'head' ? 6.0 : 8;
+
   return (
     <OrbitControls 
       ref={controlsRef}
       makeDefault 
-      minDistance={2} 
-      maxDistance={8} // Restrict zoom out
+      minDistance={minDistance} 
+      maxDistance={maxDistance}
       minPolarAngle={0}
       maxPolarAngle={Math.PI / 2} // Restrict going below the floor
       enablePan={true}
@@ -63,7 +92,7 @@ export default function Scene({ onSelectPart, selectedPart, gender, viewMode }: 
           <ContactShadows position={[0, -1.6, 0]} resolution={1024} scale={10} blur={1} opacity={0.5} far={10} color="#000000" />
           <Environment preset="city" />
           
-          <Controls />
+          <Controls key={`${viewMode}-${gender}`} viewMode={viewMode} gender={gender} />
         </Suspense>
       </Canvas>
     </div>
