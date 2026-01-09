@@ -136,6 +136,9 @@ export const BodyModel: React.FC<BodyModelProps> = ({
     if (viewMode === "left-hand") {
       return gender === "male" ? "/models/male/male-left-hand.glb" : "/models/female/female-left-hand.glb";
     }
+    if (viewMode === "right-hand") {
+      return gender === "male" ? "/models/male/male-right-hand.glb" : "/models/female/female-right-hand.glb";
+    }
     return gender === "male" ? "/models/male/male-body.glb" : "/models/female/female-body.glb";
   }, [gender, viewMode]);
 
@@ -146,7 +149,9 @@ export const BodyModel: React.FC<BodyModelProps> = ({
     
     // Apply specific rotations for hands to distinguish them
     if (viewMode === "left-hand") {
-      clonedScene.rotation.y = Math.PI / 2; // Rotate 90 degrees
+      clonedScene.rotation.y = Math.PI; // Rotate 180 degrees
+    } else if (viewMode === "right-hand") {
+      clonedScene.rotation.y = -Math.PI / 2; // Rotate -90 degrees (flipped 180 from previous)
     }
     
     return clonedScene;

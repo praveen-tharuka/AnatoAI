@@ -21,6 +21,9 @@ export default function Home() {
     } else if (partName === "Left Hand") {
       setViewMode("left-hand");
       setSelectedPart(null);
+    } else if (partName === "Right Hand") {
+      setViewMode("right-hand");
+      setSelectedPart(null);
     } else {
       setViewMode("full");
       setSelectedPart(partName);
@@ -33,6 +36,9 @@ export default function Home() {
       setSelectedPart(null);
     } else if (partName === "Left Hand") {
       setViewMode("left-hand");
+      setSelectedPart(null);
+    } else if (partName === "Right Hand") {
+      setViewMode("right-hand");
       setSelectedPart(null);
     } else {
       setSelectedPart(partName);
@@ -121,6 +127,20 @@ export default function Home() {
             <Hand className="w-6 h-6 min-w-[24px] transform scale-x-[-1]" />
             <span className="font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap delay-75">
               Left Hand
+            </span>
+          </button>
+
+          <button
+            onClick={() => handleSidebarClick("Right Hand")}
+            className={`flex items-center gap-4 p-3 rounded-xl transition-all duration-200 ${
+              viewMode === "right-hand"
+                ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30"
+                : "text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+            }`}
+          >
+            <Hand className="w-6 h-6 min-w-[24px]" />
+            <span className="font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap delay-75">
+              Right Hand
             </span>
           </button>
 
