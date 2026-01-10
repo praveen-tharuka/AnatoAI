@@ -9,11 +9,14 @@ import { Activity, ArrowLeft, User, Brain, Hand } from "lucide-react";
 export default function Home() {
   const [selectedPart, setSelectedPart] = useState<string | null>(null);
   const [gender, setGender] = useState<"male" | "female">("male");
-  const [viewMode, setViewMode] = useState<"full" | "head" | "left-hand" | "right-hand">("full");
+  const [viewMode, setViewMode] = useState<"full" | "head" | "torso" | "left-hand" | "right-hand">("full");
 
   const handleSidebarClick = (partName: string) => {
     if (partName === "Head") {
       setViewMode("head");
+      setSelectedPart(null);
+    } else if (partName === "Torso") {
+      setViewMode("torso");
       setSelectedPart(null);
     } else if (partName === "Full Body") {
       setViewMode("full");
@@ -115,7 +118,19 @@ export default function Home() {
               Head Region
             </span>
           </button>
-
+          <button
+            onClick={() => handleSidebarClick("Torso")}
+            className={`flex items-center gap-4 p-3 rounded-xl transition-all duration-200 ${
+              viewMode === "torso"
+                ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30"
+                : "text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+            }`}
+          >
+            <Activity className="w-6 h-6 min-w-[24px]" />
+            <span className="font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap delay-75">
+              Torso
+            </span>
+          </button>
           <button
             onClick={() => handleSidebarClick("Left Hand")}
             className={`flex items-center gap-4 p-3 rounded-xl transition-all duration-200 ${

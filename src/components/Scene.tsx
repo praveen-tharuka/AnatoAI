@@ -10,12 +10,19 @@ interface SceneProps {
   onSelectPart: (part: string) => void;
   selectedPart: string | null;
   gender: "male" | "female";
-  viewMode: "full" | "head" | "left-hand" | "right-hand";
+  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand";
 }
 
 interface ControlsProps {
-  viewMode: "full" | "head" | "left-hand" | "right-hand";
+  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand";
   gender: "male" | "female";
+}
+
+// Minimal interface for the OrbitControls ref based on usage
+interface OrbitControlsRef {
+  target: THREE.Vector3;
+  update: () => void;
+  object: THREE.Camera;
 }
 
 function Controls({ viewMode, gender }: ControlsProps) {
@@ -27,8 +34,8 @@ function Controls({ viewMode, gender }: ControlsProps) {
     if (controlsRef.current) {
       const controls = controlsRef.current;
       
-      if (viewMode === 'head') {
-        // Head View: Default to "lowest zoom level" (furthest distance)
+      if (viewMode === 'head' || viewMode === 'torso') {
+        // Head/Torso View: Default to "lowest zoom level" (furthest distance)
         camera.position.set(0, 0, 6.0);
         controls.target.set(0, 0, 0);
       } else if (viewMode === 'left-hand' || viewMode === 'right-hand') {

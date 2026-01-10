@@ -17,7 +17,7 @@ interface BodyPartConfig {
 
 // --- Configuration Data ---
 
-export const FULL_BODY_PARTS: BodyPartConfig[] = [
+export const MALE_BODY_PARTS: BodyPartConfig[] = [
   // --- Head Region ---
   { name: "Head", type: "sphere", position: [0, 1.5, 0], args: [0.25, 32, 32] },
   
@@ -31,6 +31,22 @@ export const FULL_BODY_PARTS: BodyPartConfig[] = [
   // --- Legs ---
   { name: "Left Leg", type: "capsule", position: [0.25, -0.7, 0], args: [0.15, 1.5, 4, 8] },
   { name: "Right Leg", type: "capsule", position: [-0.25, -0.7, 0], args: [0.15, 1.5, 4, 8] },
+];
+
+export const FEMALE_BODY_PARTS: BodyPartConfig[] = [
+  // --- Head Region ---
+  { name: "Head", type: "sphere", position: [0, 1.45, 0], args: [0.24, 32, 32] },
+  
+  // --- Torso ---
+  { name: "Torso", type: "box", position: [0, 0.65, 0], args: [0.5, 1.1, 0.28] },
+  
+  // --- Hands (Arms) ---
+  { name: "Left Hand", type: "box", position: [0.50, 0.82, -0.1], args: [0.25, 1.0, 0.25], rotation: [0, 0, -0.4] },
+  { name: "Right Hand", type: "box", position: [-0.50, 0.82, -0.1], args: [0.25, 1.0, 0.25], rotation: [0, 0, 0.4] },
+
+  // --- Legs ---
+  { name: "Left Leg", type: "capsule", position: [0.25, -0.55, -0.05], args: [0.14, 1.4, 4, 8] },
+  { name: "Right Leg", type: "capsule", position: [-0.25, -0.55, -0.05], args: [0.14, 1.4, 4, 8] },
 ];
 
 // --- Components ---
@@ -120,7 +136,7 @@ interface BodyModelProps {
   onSelectPart: (part: string) => void;
   selectedPart: string | null;
   gender: "male" | "female";
-  viewMode: "full" | "head" | "left-hand" | "right-hand";
+  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand";
 }
 
 export const BodyModel: React.FC<BodyModelProps> = ({
@@ -133,11 +149,14 @@ export const BodyModel: React.FC<BodyModelProps> = ({
     if (viewMode === "head") {
       return gender === "male" ? "/models/male/male-head.glb" : "/models/female/female-head.glb";
     }
+    if (viewMode === "torso") {
+      return gender === "male" ? "/models/male/male-torso.glb" : "/models/female/female-torso.glb";
+    }
     if (viewMode === "left-hand") {
-      return gender === "male" ? "/models/male/male-left-hand.glb" : "/models/female/female-left-hand.glb";
+      return gender === "male" ? "/models/male/male-left-arm.glb" : "/models/female/female-left-arm.glb";
     }
     if (viewMode === "right-hand") {
-      return gender === "male" ? "/models/male/male-right-hand.glb" : "/models/female/female-right-hand.glb";
+      return gender === "male" ? "/models/male/male-right-arm.glb" : "/models/female/female-right-arm.glb";
     }
     return gender === "male" ? "/models/male/male-body.glb" : "/models/female/female-body.glb";
   }, [gender, viewMode]);
@@ -149,13 +168,15 @@ export const BodyModel: React.FC<BodyModelProps> = ({
     
     // Apply specific rotations for hands to distinguish them
     if (viewMode === "left-hand") {
-      clonedScene.rotation.y = Math.PI; // Rotate 180 degrees
+      clonedScene.rotation.y = 0; // Rotated 180 degrees from previous PI
     } else if (viewMode === "right-hand") {
-      clonedScene.rotation.y = -Math.PI / 2; // Rotate -90 degrees (flipped 180 from previous)
+      clonedScene.rotation.y = Math.PI; // Rotated 180 degrees
+    } else if (viewMode === "torso") {
+      clonedScene.rotation.y = -Math.PI / 2; // Rotate -90 degrees (clockwise) to face forward
     }
     
     return clonedScene;
-  }, [originalScene, viewMode]);
+  }, [originalScene, viewMode, gender]);
   const { actions } = useAnimations(animations, scene);
   
   useEffect(() => {
@@ -241,7 +262,7 @@ export const BodyModel: React.FC<BodyModelProps> = ({
 
       {/* Annotations (Cards + Pins + Lines) */}
       <group>
-        {viewMode === "full" && FULL_BODY_PARTS.map((part) => (
+        {viewMode === "full" && (gender === "male" ? MALE_BODY_PARTS : FEMALE_BODY_PARTS).map((part) => (
           <BodyPart
             key={part.name}
             position={part.position}
