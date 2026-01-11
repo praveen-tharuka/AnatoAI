@@ -105,9 +105,9 @@ const BodyPart: React.FC<BodyPartProps> = ({
       <mesh>
         <sphereGeometry args={[0.03, 16, 16]} />
         <meshBasicMaterial 
-            color={isSelected ? "#f43f5e" : (hovered ? "#2dd4bf" : "#ffffff")}
+            color={isSelected ? "#2563eb" : (hovered ? "#3b82f6" : "#ffffff")}
             transparent 
-            opacity={0.8} 
+            opacity={0.9} 
             depthTest={false} // Visible through the body
             depthWrite={false}
         />
@@ -117,12 +117,12 @@ const BodyPart: React.FC<BodyPartProps> = ({
       {(hovered || isSelected) && (
         <Html distanceFactor={8} position={[0, 0, 0]} style={{ pointerEvents: 'none' }}>
           <div className={`
-            px-3 py-1.5 rounded-lg text-sm font-bold shadow-lg backdrop-blur-md
+            px-3 py-1.5 rounded-lg text-sm font-bold shadow-lg backdrop-blur-md font-sans
             transform -translate-x-1/2 -translate-y-full transition-all duration-200
             mb-4
             ${isSelected 
-              ? "bg-rose-500/90 text-white border border-rose-400" 
-              : "bg-slate-900/80 text-teal-300 border border-teal-500/30"}
+              ? "bg-blue-600/95 text-white border border-blue-400" 
+              : "bg-white/90 text-blue-700 border border-blue-300 shadow-md"}
           `}>
             {name}
           </div>
