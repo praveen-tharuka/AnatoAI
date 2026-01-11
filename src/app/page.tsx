@@ -39,6 +39,9 @@ export default function Home() {
     if (partName === "Head") {
       setViewMode("head");
       setSelectedPart(null);
+    } else if (partName === "Torso") {
+      setViewMode("torso");
+      setSelectedPart(null);
     } else if (partName === "Left Hand") {
       setViewMode("left-hand");
       setSelectedPart(null);
