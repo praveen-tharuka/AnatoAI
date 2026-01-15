@@ -222,14 +222,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="w-full bg-slate-900 text-white py-8 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-slate-400">
-            © 2026 AnatoAI. Interactive health assistant powered by AI and 3D anatomy models.
-          </p>
-        </div>
-      </footer>
+    
     </main>
     </>
   );
