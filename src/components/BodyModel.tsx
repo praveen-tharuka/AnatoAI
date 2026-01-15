@@ -71,6 +71,55 @@ export const FEMALE_HEAD_PARTS: BodyPartConfig[] = [
   { name: "Neck", type: "capsule", position: [0, -1.00, 0], args: [0.105, 0.315, 4, 8] },
 ];
 
+// --- Torso Parts Configuration (Male) ---
+export const MALE_TORSO_PARTS: BodyPartConfig[] = [
+  // -- Chest Region (High) --
+  // Y dropped from 1.05 -> 0.95
+  // X widened from 0.15 -> 0.25
+  { name: "Pectorals (Chest)", type: "box", position: [0, 0.95, 0.2], args: [0.5, 0.25, 0.15] },
+  { name: "Sternum (Center)", type: "box", position: [0, 0.95, 0.25], args: [0.1, 0.25, 0.1] },
+  
+  // -- Upper Abdomen (Solar Plexus) --
+  // Y dropped from 0.85 -> 0.72
+  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, 0.72, 0.22], args: [0.13, 16, 16] },
+  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.28, 0.72, 0.18], args: [0.12, 16, 16] },
+  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.28, 0.72, 0.18], args: [0.12, 16, 16] },
+
+  // -- Middle Abdomen (Navel Area) --
+  // Y dropped from 0.70 -> 0.48 (The Navel is much lower than I thought)
+  { name: "Umbilical (Navel)", type: "sphere", position: [0, 0.48, 0.23], args: [0.13, 16, 16] },
+  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.30, 0.48, 0.18], args: [0.12, 16, 16] },
+  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.30, 0.48, 0.18], args: [0.12, 16, 16] },
+
+  // -- Lower Abdomen (Belt Line) --
+  // Y dropped from 0.55 -> 0.25
+  { name: "Hypogastric (Bladder)", type: "sphere", position: [0, 0.25, 0.21], args: [0.13, 16, 16] },
+  { name: "Right Iliac (Appendix)", type: "sphere", position: [-0.28, 0.25, 0.18], args: [0.12, 16, 16] },
+  { name: "Left Iliac (Colon)", type: "sphere", position: [0.28, 0.25, 0.18], args: [0.12, 16, 16] },
+];
+
+// --- Torso Parts Configuration (Female) ---
+export const FEMALE_TORSO_PARTS: BodyPartConfig[] = [
+  // -- Chest Region --
+  { name: "Chest/Breast", type: "box", position: [0, 0.92, 0.22], args: [0.45, 0.22, 0.15] },
+  { name: "Sternum (Center)", type: "box", position: [0, 0.92, 0.28], args: [0.08, 0.22, 0.1] },
+
+  // -- Upper Abdomen --
+  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, 0.70, 0.19], args: [0.12, 16, 16] },
+  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.26, 0.70, 0.17], args: [0.11, 16, 16] },
+  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.26, 0.70, 0.17], args: [0.11, 16, 16] },
+
+  // -- Middle Abdomen --
+  { name: "Umbilical (Navel)", type: "sphere", position: [0, 0.48, 0.20], args: [0.12, 16, 16] },
+  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.28, 0.48, 0.17], args: [0.11, 16, 16] },
+  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.28, 0.48, 0.17], args: [0.11, 16, 16] },
+
+  // -- Lower Abdomen --
+  { name: "Hypogastric (Bladder)", type: "sphere", position: [0, 0.25, 0.19], args: [0.12, 16, 16] },
+  { name: "Right Iliac (Appendix)", type: "sphere", position: [-0.26, 0.25, 0.17], args: [0.11, 16, 16] },
+  { name: "Left Iliac (Colon)", type: "sphere", position: [0.26, 0.25, 0.17], args: [0.11, 16, 16] },
+];
+
 // --- Components ---
 
 interface BodyPartProps {
@@ -304,6 +353,19 @@ export const BodyModel: React.FC<BodyModelProps> = ({
         ))}
         
         {viewMode === "head" && (gender === "male" ? MALE_HEAD_PARTS : FEMALE_HEAD_PARTS).map((part) => (
+          <BodyPart
+            key={part.name}
+            position={part.position}
+            args={part.args as [number, number, number] | [number, number, number, number]}
+            name={part.name}
+            type={part.type}
+            rotation={part.rotation}
+            onSelect={onSelectPart}
+            selectedPart={selectedPart}
+          />
+        ))}
+        
+        {viewMode === "torso" && (gender === "male" ? MALE_TORSO_PARTS : FEMALE_TORSO_PARTS).map((part) => (
           <BodyPart
             key={part.name}
             position={part.position}
