@@ -91,7 +91,7 @@ function Controls({ viewMode, gender }: ControlsProps) {
 
 export default function Scene({ onSelectPart, selectedPart, gender, viewMode }: SceneProps) {
   return (
-    <div className="w-full h-full bg-gradient-to-b from-blue-50 to-white">
+    <div className="w-full h-full bg-transparent">
       <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
         <Suspense fallback={null}>
           <ambientLight intensity={0.6} />

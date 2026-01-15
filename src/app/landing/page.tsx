@@ -7,6 +7,8 @@ import { GlowModelRotator } from "@/components/GlowModelRotator";
 import { Activity, Brain, Heart, Stethoscope, ArrowRight, Github, Twitter, Linkedin } from "lucide-react";
 import Link from "next/link";
 
+import { ThemeToggle } from "@/components/ThemeToggle";
+
 const AnimatedHeroText = () => {
   const [displayedText, setDisplayedText] = useState("Explore the human body");
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -59,40 +61,49 @@ export default function LandingPage() {
           50% { transform: translateY(-10px); }
         }
         .animated-hero-gradient {
-          background: linear-gradient(-45deg, #e0f2fe, #f0f9ff, #bfdbfe, #ffffff);
+          /* Darkened Light Mode Gradient: Slate-200 to Blue-100 mix, no pure white */
+          background: linear-gradient(-45deg, #cbd5e1, #e2e8f0, #dbeafe, #cbd5e1);
           background-size: 400% 400%;
           animation: gradient-shift 8s ease infinite;
+        }
+        :global(.dark) .animated-hero-gradient {
+          background: none !important;
         }
         .glass-header-floating {
              background: rgba(255, 255, 255, 0.85);
              backdrop-filter: blur(12px);
              -webkit-backdrop-filter: blur(12px);
         }
+        :global(.dark) .glass-header-floating {
+             background: rgba(15, 23, 42, 0.95);
+             border-color: transparent;
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        }
         .floating-element {
           animation: float 6s ease-in-out infinite;
         }
       `}</style>
-      <main className="relative w-full bg-slate-50 text-slate-900 font-sans">
+      <main className="relative w-full bg-gradient-to-br from-slate-200 via-blue-100 to-slate-200 dark:from-slate-900 dark:to-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-500">
       
       {/* Floating Premium Header */}
-      <header className="fixed top-4 left-0 right-0 mx-auto w-[92%] max-w-7xl glass-header-floating rounded-2xl border border-white/60 shadow-lg shadow-blue-900/5 z-50 transition-all duration-300">
+      <header className="fixed top-4 left-0 right-0 mx-auto w-[92%] max-w-7xl glass-header-floating rounded-2xl border border-white/60 dark:border-none shadow-lg shadow-blue-900/5 z-50 transition-all duration-300">
         <div className="px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <Link href="/landing" className="flex items-center gap-3 cursor-pointer">
             <div className="bg-gradient-to-br from-blue-600 to-indigo-600 p-2 rounded-xl shadow-lg shadow-blue-500/20">
               <Activity className="text-white w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-slate-900 tracking-tight leading-none">AnatoAI</h1>
-              <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest leading-none mt-0.5">Health Intelligence</p>
+              <h1 className="text-xl font-bold text-slate-900 dark:text-black tracking-tight leading-none">AnatoAI</h1>
+              <p className="text-[10px] font-bold text-blue-600 dark:text-blue-500 uppercase tracking-widest leading-none mt-0.5">Health Intelligence</p>
             </div>
-          </div>
+          </Link>
 
-          <nav className="hidden md:flex items-center gap-1 bg-slate-100/50 p-1 rounded-full border border-slate-200/50">
+          <nav className="hidden md:flex items-center gap-1 bg-slate-200 dark:bg-slate-700 p-1 rounded-full border border-slate-300 dark:border-none">
             {["Home", "Features", "About"].map((item) => (
               <Link 
                 key={item}
                 href={`#${item.toLowerCase()}`} 
-                className="px-5 py-2 text-sm font-semibold text-slate-600 hover:text-blue-700 hover:bg-white rounded-full transition-all duration-200"
+                className="px-5 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-700 dark:hover:text-slate-900 hover:bg-white dark:hover:bg-white rounded-full transition-all duration-200"
               >
                 {item}
               </Link>
@@ -101,7 +112,7 @@ export default function LandingPage() {
 
           <button
             onClick={() => window.location.href = "/app"}
-            className="group px-6 py-2.5 bg-slate-900 hover:bg-blue-600 text-white text-sm font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
+            className="group px-6 py-2.5 bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white dark:text-white text-sm font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
           >
             Launch App 
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -109,10 +120,15 @@ export default function LandingPage() {
         </div>
       </header>
 
+      <ThemeToggle />
+
       {/* Hero Section */}
-      <section id="home" className="relative w-full h-screen flex items-center justify-center pt-24 overflow-hidden animated-hero-gradient">
+      <section id="home" className="relative w-full h-screen flex items-center justify-center pt-24 overflow-hidden animated-hero-gradient dark:!bg-none dark:bg-slate-950">
         {/* 3D Canvas - Background */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 opacity-100 dark:opacity-100 transition-opacity duration-500 bg-transparent">
+          {/* Subtle dark gradient for depth in dark mode - removes patchy white */}
+          <div className="absolute inset-0 bg-transparent dark:bg-gradient-to-b dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 opacity-100 pointer-events-none" />
+          
           <Canvas
             camera={{ position: [0, 0, 16], fov: 45 }}
             gl={{ antialias: true, alpha: true }}
@@ -150,7 +166,7 @@ export default function LandingPage() {
 
         {/* Content Overlay */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-[-5vh] pointer-events-none">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 text-blue-700 text-xs font-bold tracking-wide mb-8 border border-blue-100 shadow-sm backdrop-blur-sm floating-element">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-slate-800/80 text-blue-700 dark:text-blue-300 text-xs font-bold tracking-wide mb-8 border border-blue-100 dark:border-blue-900 shadow-sm backdrop-blur-sm floating-element">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
@@ -158,9 +174,11 @@ export default function LandingPage() {
             NEXT-GEN HEALTH EDUCATION
           </div>
           
-          <AnimatedHeroText />
+          <div className="dark:text-white">
+            <AnimatedHeroText />
+          </div>
           
-          <p className="mt-8 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto font-medium">
+          <p className="mt-8 text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto font-medium">
             Experience the human body like never before. Interactive 3D visualization combined with powerful AI diagnostics for a smarter, healthier you.
           </p>
 
@@ -171,7 +189,7 @@ export default function LandingPage() {
             >
               Start Exploring <Activity className="w-5 h-5" />
             </button>
-            <button className="px-8 py-4 bg-white/50 hover:bg-white text-slate-700 font-bold rounded-2xl shadow-lg shadow-slate-200/50 hover:shadow-xl transition-all duration-300 text-lg border border-white backdrop-blur-sm">
+            <button className="px-8 py-4 bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold rounded-2xl shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 hover:shadow-xl transition-all duration-300 text-lg border border-white dark:border-slate-700 backdrop-blur-sm">
               Watch Demo
             </button>
           </div>
@@ -179,11 +197,11 @@ export default function LandingPage() {
       </section>
 
       {/* Features / About Section (Condensed) */}
-      <section id="features" className="py-32 px-6 bg-white relative z-10">
+      <section id="features" className="py-32 px-6 bg-white dark:bg-slate-900 relative z-10 transition-colors duration-500">
         <div className="max-w-7xl mx-auto">
            <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Why Choose AnatoAI?</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto text-xl">We bridge the gap between complex medical data and understandable visual insights.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">Why Choose AnatoAI?</h2>
+            <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-xl">We bridge the gap between complex medical data and understandable visual insights.</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -192,14 +210,14 @@ export default function LandingPage() {
               { icon: Activity, title: "Real-time 3D", desc: "Interact with high-fidelity anatomical models. Rotate, zoom, and isolate specific body parts." },
               { icon: Heart, title: "Holistic Health", desc: "Understand connections between different bodily systems and improved health literacy." }
             ].map((feature, i) => (
-              <div key={i} className="group p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-100 hover:bg-gradient-to-br hover:from-white hover:to-blue-50/30 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 relative overflow-hidden">
-                <div className="absolute -right-6 -top-6 w-32 h-32 bg-blue-50 rounded-full group-hover:scale-150 transition-transform duration-700 ease-out" />
+              <div key={i} className="group p-10 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-blue-100 dark:hover:border-blue-700 hover:bg-gradient-to-br hover:from-white dark:hover:from-slate-700 hover:to-blue-50/30 dark:hover:to-blue-900/10 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 relative overflow-hidden">
+                <div className="absolute -right-6 -top-6 w-32 h-32 bg-blue-50 dark:bg-blue-900/20 rounded-full group-hover:scale-150 transition-transform duration-700 ease-out" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center mb-8 text-blue-600 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <div className="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-600 flex items-center justify-center mb-8 text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     <feature.icon className="w-7 h-7" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{feature.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{feature.desc}</p>
                 </div>
               </div>
             ))}
@@ -268,12 +286,6 @@ export default function LandingPage() {
 
           <div className="pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
             <p>© 2026 AnatoAI Inc. All rights reserved.</p>
-            <div className="flex items-center gap-6">
-              <span className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                System Operational
-              </span>
-            </div>
           </div>
         </div>
       </footer>
