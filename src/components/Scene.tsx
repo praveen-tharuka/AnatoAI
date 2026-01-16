@@ -10,11 +10,11 @@ interface SceneProps {
   onSelectPart: (part: string) => void;
   selectedPart: string | null;
   gender: "male" | "female";
-  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand" | "right-leg";
+  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand" | "left-leg" | "right-leg";
 }
 
 interface ControlsProps {
-  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand" | "right-leg";
+  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand" | "left-leg" | "right-leg";
   gender: "male" | "female";
 }
 
@@ -34,7 +34,7 @@ function Controls({ viewMode, gender }: ControlsProps) {
     if (controlsRef.current) {
       const controls = controlsRef.current;
       
-      if (viewMode === 'head' || viewMode === 'torso' || viewMode === 'right-leg') {
+      if (viewMode === 'head' || viewMode === 'torso' || viewMode === 'right-leg' || viewMode === 'left-leg') {
         // Head/Torso/Leg View: Default to "lowest zoom level" (furthest distance)
         camera.position.set(0, 0, 6.0);
         controls.target.set(0, 0, 0);

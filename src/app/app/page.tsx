@@ -11,7 +11,7 @@ import Link from "next/link";
 export default function AppPage() {
   const [selectedPart, setSelectedPart] = useState<string | null>(null);
   const [gender, setGender] = useState<"male" | "female">("male");
-  const [viewMode, setViewMode] = useState<"full" | "head" | "torso" | "left-hand" | "right-hand" | "right-leg">("full");
+  const [viewMode, setViewMode] = useState<"full" | "head" | "torso" | "left-hand" | "right-hand" | "left-leg" | "right-leg">("full");
 
   const handleSidebarClick = (partName: string) => {
     // Map internal IDs to view modes if necessary, but NavigationRail uses IDs that match viewMode
@@ -27,10 +27,11 @@ export default function AppPage() {
     else if (partName === "Torso") setViewMode("torso");
     else if (partName === "Left Hand") setViewMode("left-hand");
     else if (partName === "Right Hand") setViewMode("right-hand");
+    else if (partName === "Left Leg") setViewMode("left-leg");
     else if (partName === "Right Leg") setViewMode("right-leg");
     else setSelectedPart(partName);
     
-    if (["Head", "Torso", "Left Hand", "Right Hand", "Right Leg", "Full Body"].includes(partName)) {
+    if (["Head", "Torso", "Left Hand", "Right Hand", "Left Leg", "Right Leg", "Full Body"].includes(partName)) {
         setSelectedPart(null);
     }
   };

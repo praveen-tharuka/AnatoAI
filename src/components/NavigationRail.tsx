@@ -15,6 +15,7 @@ export const NavigationRail: React.FC<NavigationRailProps> = ({ onSelect, active
     { id: "torso", label: "Torso", icon: Shirt },
     { id: "left-hand", label: "Left Hand", icon: Hand }, // Hand icon might need rotation for L/R distinguishing if needed, but generic Hand is fine
     { id: "right-hand", label: "Right Hand", icon: Hand },
+    { id: "left-leg", label: "Left Leg", icon: Footprints },
     { id: "right-leg", label: "Right Leg", icon: Footprints },
   ];
 
@@ -32,7 +33,7 @@ export const NavigationRail: React.FC<NavigationRailProps> = ({ onSelect, active
             }`}
           >
             <div className={`min-w-[20px] flex items-center justify-center`}>
-               <item.icon className={`w-5 h-5 ${item.id === "left-hand" ? "-scale-x-100" : ""}`} />
+               <item.icon className={`w-5 h-5 ${(item.id === "left-hand" || item.id === "left-leg") ? "-scale-x-100" : ""}`} />
             </div>
             
             <span className={`font-semibold text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute left-12 delay-75`}>
