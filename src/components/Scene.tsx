@@ -10,11 +10,11 @@ interface SceneProps {
   onSelectPart: (part: string) => void;
   selectedPart: string | null;
   gender: "male" | "female";
-  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand" | "right-leg";
+  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand" | "left-leg" | "right-leg";
 }
 
 interface ControlsProps {
-  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand" | "right-leg";
+  viewMode: "full" | "head" | "torso" | "left-hand" | "right-hand" | "left-leg" | "right-leg";
   gender: "male" | "female";
 }
 
@@ -34,7 +34,7 @@ function Controls({ viewMode, gender }: ControlsProps) {
     if (controlsRef.current) {
       const controls = controlsRef.current;
       
-      if (viewMode === 'head' || viewMode === 'torso' || viewMode === 'right-leg') {
+      if (viewMode === 'head' || viewMode === 'torso' || viewMode === 'right-leg' || viewMode === 'left-leg') {
         // Head/Torso/Leg View: Default to "lowest zoom level" (furthest distance)
         camera.position.set(0, 0, 6.0);
         controls.target.set(0, 0, 0);
@@ -91,18 +91,19 @@ function Controls({ viewMode, gender }: ControlsProps) {
 
 export default function Scene({ onSelectPart, selectedPart, gender, viewMode }: SceneProps) {
   return (
-    <div className="w-full h-full bg-gradient-to-b from-slate-900 to-slate-800">
+    <div className="w-full h-full bg-transparent">
       <Canvas camera={{ position: [0, 1, 5], fov: 45 }}>
         <Suspense fallback={null}>
-          <ambientLight intensity={0.2} />
-          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#00f0ff" />
+          <ambientLight intensity={0.6} />
+          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1.2} />
+          <pointLight position={[-10, -10, -10]} intensity={0.4} color="#3b82f6" />
+          <directionalLight position={[5, 5, 5]} intensity={0.8} />
           
           <BodyModel onSelectPart={onSelectPart} selectedPart={selectedPart} gender={gender} viewMode={viewMode} />
           
-          {/* Moved shadows down to feet level (-1.6) to avoid cutting through the body */}
-          <ContactShadows position={[0, -1.6, 0]} resolution={1024} scale={10} blur={1} opacity={0.5} far={10} color="#000000" />
-          <Environment preset="city" />
+          {/* Shadows adjusted for lighter background */}
+          <ContactShadows position={[0, -1.6, 0]} resolution={1024} scale={10} blur={1.5} opacity={0.3} far={10} color="#1e3a8a" />
+          <Environment preset="sunset" />
           
           <Controls key={`${viewMode}-${gender}`} viewMode={viewMode} gender={gender} />
         </Suspense>
