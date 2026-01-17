@@ -66,22 +66,22 @@ export const MALE_TORSO_PARTS: BodyPartConfig[] = [
 export const FEMALE_TORSO_PARTS: BodyPartConfig[] = [
   // -- Chest --
   { name: "Breasts (Chest)", type: "box", position: [0, 0.50, 0.3], args: [0.45, 0.22, 0.15] },
-  { name: "Sternum (Center)", type: "box", position: [0, 0.30, 0.28], args: [0.08, 0.22, 0.1] },
+  { name: "Sternum (Center)", type: "box", position: [0, 0.30, 0.32], args: [0.08, 0.22, 0.1] },
   
   // -- Upper Abdomen --
-  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, -0.1, 0.28], args: [0.12, 16, 16] },
-  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.26, -0.1, 0.25], args: [0.11, 16, 16] },
-  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.26, -0.1, 0.25], args: [0.11, 16, 16] },
+  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, -0.10, 0.25], args: [0.12, 16, 16] },
+  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.28, -0.10, 0.22], args: [0.11, 16, 16] },
+  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.28, -0.10, 0.22], args: [0.11, 16, 16] },
   
   // -- Middle Abdomen --
-  { name: "Umbilical (Navel)", type: "sphere", position: [0, -0.9, 0.3], args: [0.12, 16, 16] },
-  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.28, -0.6, 0.25], args: [0.11, 16, 16] },
-  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.28, -0.6, 0.25], args: [0.11, 16, 16] },
+  { name: "Umbilical (Navel)", type: "sphere", position: [0, 0.48, 0.26], args: [0.12, 16, 16] },
+  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.30, 0.48, 0.22], args: [0.11, 16, 16] },
+  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.30, 0.48, 0.22], args: [0.11, 16, 16] },
   
   // -- Lower Abdomen --
-  { name: "Hypogastric (Bladder/Uterus)", type: "sphere", position: [0, -1.25, 0.28], args: [0.12, 16, 16] },
-  { name: "Right Iliac (Appendix/Ovary)", type: "sphere", position: [-0.26, -1.2, 0.25], args: [0.11, 16, 16] },
-  { name: "Left Iliac (Colon/Ovary)", type: "sphere", position: [0.26, -1.2, 0.25], args: [0.11, 16, 16] },
+  { name: "Hypogastric (Bladder/Uterus)", type: "sphere", position: [0, 0.25, 0.24], args: [0.12, 16, 16] },
+  { name: "Right Iliac (Appendix/Ovary)", type: "sphere", position: [-0.28, 0.25, 0.22], args: [0.11, 16, 16] },
+  { name: "Left Iliac (Colon/Ovary)", type: "sphere", position: [0.28, 0.25, 0.22], args: [0.11, 16, 16] },
 ];
 
 // ==========================================
@@ -128,7 +128,6 @@ interface BodyPartProps {
   selectedPart: string | null;
   type: "capsule" | "sphere" | "box";
   rotation?: [number, number, number];
-  isSolid?: boolean;
 }
 
 const BodyPart: React.FC<BodyPartProps> = ({
@@ -139,7 +138,6 @@ const BodyPart: React.FC<BodyPartProps> = ({
   selectedPart,
   type,
   rotation = [0, 0, 0],
-  isSolid = false,
 }) => {
   const [hovered, setHover] = useState(false);
   const isSelected = selectedPart === name;
@@ -175,12 +173,13 @@ const BodyPart: React.FC<BodyPartProps> = ({
       {/* Center Pinpoint Marker (Always visible inside) */}
       <mesh>
         <sphereGeometry args={[0.07, 16, 16]} />
+        {/* FIXED: depthTest={false} ensures the white dot renders ON TOP of the body */}
         <meshStandardMaterial 
             color={isSelected ? "#ea384c" : (hovered ? "#3b82f6" : "#cbd5e1")}
-            transparent={false}
-            opacity={1} 
-            depthTest={false}
-            depthWrite={false}
+            transparent={true} // Set transparent true so it blends nicely if we want opacity
+            opacity={0.9} 
+            depthTest={false}  // <--- KEY FIX: Disable depth test to see through body
+            depthWrite={false} // <--- KEY FIX: Don't write to depth buffer
             roughness={0.5}
             metalness={0.2}
         />
@@ -367,7 +366,6 @@ export const BodyModel: React.FC<BodyModelProps> = ({
             rotation={part.rotation}
             onSelect={onSelectPart}
             selectedPart={selectedPart}
-            isSolid={true}
           />
         ))}
 
