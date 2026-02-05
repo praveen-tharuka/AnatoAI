@@ -37,6 +37,28 @@ export const FEMALE_BODY_PARTS: BodyPartConfig[] = [
   { name: "Right Leg", type: "capsule", position: [-0.25, -0.55, -0.05], args: [0.14, 1.4, 4, 8] },
 ];
 
+// --- Head Parts Configuration (Male) ---
+export const MALE_HEAD_PARTS: BodyPartConfig[] = [
+  { name: "Head", type: "sphere", position: [0, 1.30, 0], args: [0.25, 64, 64] },
+  { name: "Left Eye", type: "sphere", position: [-0.39, 0.45, 0.19], args: [0.038, 16, 16] },
+  { name: "Right Eye", type: "sphere", position: [0.39, 0.45, 0.19], args: [0.038, 16, 16] },
+  { name: "Mouth", type: "box", position: [0, -0.45, 0.22], args: [0.11, 0.055, 0.075] },
+  { name: "Left Ear", type: "sphere", position: [-0.80, -0.001, 0], args: [0.095, 16, 16] },
+  { name: "Right Ear", type: "sphere", position: [0.80, -0.002, 0], args: [0.095, 16, 16] },
+  { name: "Neck", type: "capsule", position: [0, -1.20, 0], args: [0.11, 0.33, 4, 8] },
+];
+
+// --- Head Parts Configuration (Female) ---
+export const FEMALE_HEAD_PARTS: BodyPartConfig[] = [
+  { name: "Head", type: "sphere", position: [0, 1.25, 0], args: [0.24, 64, 64] },
+  { name: "Left Eye", type: "sphere", position: [-0.38, 0.60, 0.18], args: [0.036, 16, 16] },
+  { name: "Right Eye", type: "sphere", position: [0.38, 0.60, 0.18], args: [0.036, 16, 16] },
+  { name: "Mouth", type: "box", position: [0, -0.10, 0.21], args: [0.105, 0.052, 0.072] },
+  { name: "Left Ear", type: "sphere", position: [-0.77, 0.20, 0], args: [0.09, 16, 16] },
+  { name: "Right Ear", type: "sphere", position: [0.77, 0.20, 0], args: [0.09, 16, 16] },
+  { name: "Neck", type: "capsule", position: [0, -1.00, 0], args: [0.105, 0.315, 4, 8] },
+];
+
 // ==========================================
 // 2. TORSO CONFIGURATION (Fixed Depth)
 // ==========================================
@@ -44,44 +66,58 @@ export const FEMALE_BODY_PARTS: BodyPartConfig[] = [
 export const MALE_TORSO_PARTS: BodyPartConfig[] = [
   // -- Chest --
   // Z moved to 0.3 to sit on top of pecs
-  { name: "Pectorals (Chest)", type: "box", position: [0, 0.50, 0.3], args: [0.5, 0.25, 0.15] },
-  { name: "Sternum (Center)", type: "box", position: [0, 0.30, 0.28], args: [0.1, 0.25, 0.1] },
+  { name: "Pectorals (Chest)", type: "box", position: [0, 0.50, 0.9], args: [0.5, 0.25, 0.15] },
+  { name: "Sternum (Center)", type: "box", position: [0, 0.30, 0.9], args: [0.1, 0.25, 0.1] },
+  { name: "Right Shoulder", type: "sphere", position: [-0.4, 1.1, 0.9], args: [0.1, 16, 16] },
+  { name: "Left Shoulder", type: "sphere", position: [0.4, 1.1, 0.9], args: [0.1, 16, 16] },
   
   // -- Upper Abdomen --
-  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, -0.1, 0.28], args: [0.13, 16, 16] },
-  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.28, -0.1, 0.25], args: [0.12, 16, 16] },
-  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.28, -0.1, 0.25], args: [0.12, 16, 16] },
+  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, -0.1, 0.9], args: [0.13, 16, 16] },
+  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.28, -0.1, 0.9], args: [0.12, 16, 16] },
+  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.28, -0.1, 0.9], args: [0.12, 16, 16] },
   
   // -- Middle Abdomen --
-  { name: "Umbilical (Navel)", type: "sphere", position: [0, -0.9, 0.3], args: [0.13, 16, 16] },
-  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.30, -0.60, 0.25], args: [0.12, 16, 16] },
-  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.30, -0.60, 0.25], args: [0.12, 16, 16] },
+  { name: "Umbilical (Navel)", type: "sphere", position: [0, -0.9, 0.9], args: [0.13, 16, 16] },
+  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.30, -0.60, 0.9], args: [0.12, 16, 16] },
+  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.30, -0.60, 0.9], args: [0.12, 16, 16] },
   
   // -- Lower Abdomen --
-  { name: "Hypogastric (Bladder)", type: "sphere", position: [0, -1.25, 0.28], args: [0.13, 16, 16] },
-  { name: "Right Iliac (Appendix)", type: "sphere", position: [-0.28, -1.20, 0.25], args: [0.12, 16, 16] },
-  { name: "Left Iliac (Colon)", type: "sphere", position: [0.28, -1.20, 0.25], args: [0.12, 16, 16] },
+  { name: "Hypogastric (Bladder)", type: "sphere", position: [0, -1.25, 0.9], args: [0.13, 16, 16] },
+  { name: "Right Iliac (Appendix)", type: "sphere", position: [-0.28, -1.20, 0.9], args: [0.12, 16, 16] },
+  { name: "Left Iliac (Colon)", type: "sphere", position: [0.28, -1.20, 0.9], args: [0.12, 16, 16] },
+
+  // -- Back --
+  { name: "Upper Back", type: "sphere", position: [0, 0.6, -0.9], args: [0.12, 16, 16] },
+  { name: "Middle Back", type: "sphere", position: [0, 0.2, -0.9], args: [0.12, 16, 16] },
+  { name: "Lower Back", type: "sphere", position: [0, -0.2, -0.9], args: [0.12, 16, 16] },
 ];
 
 export const FEMALE_TORSO_PARTS: BodyPartConfig[] = [
   // -- Chest --
-  { name: "Breasts (Chest)", type: "box", position: [0, 0.50, 0.3], args: [0.45, 0.22, 0.15] },
-  { name: "Sternum (Center)", type: "box", position: [0, 0.30, 0.32], args: [0.08, 0.22, 0.1] },
+  { name: "Breasts (Chest)", type: "box", position: [0, 0.50, 0.9], args: [0.45, 0.22, 0.15] },
+  { name: "Sternum (Center)", type: "box", position: [0, 0.30, 0.9], args: [0.08, 0.22, 0.1] },
+  { name: "Right Shoulder", type: "sphere", position: [-0.4, 1.1, 0.5], args: [0.1, 16, 16] },
+  { name: "Left Shoulder", type: "sphere", position: [0.4, 1.1, 0.5], args: [0.1, 16, 16] },
   
   // -- Upper Abdomen --
-  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, -0.10, 0.25], args: [0.12, 16, 16] },
-  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.28, -0.10, 0.22], args: [0.11, 16, 16] },
-  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.28, -0.10, 0.22], args: [0.11, 16, 16] },
+  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, -0.10, 0.9], args: [0.12, 16, 16] },
+  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.28, -0.10, 0.9], args: [0.11, 16, 16] },
+  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.28, -0.10, 0.9], args: [0.11, 16, 16] },
   
   // -- Middle Abdomen --
-  { name: "Umbilical (Navel)", type: "sphere", position: [0, 0.48, 0.26], args: [0.12, 16, 16] },
-  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.30, 0.48, 0.22], args: [0.11, 16, 16] },
-  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.30, 0.48, 0.22], args: [0.11, 16, 16] },
+  { name: "Umbilical (Navel)", type: "sphere", position: [0, -0.8, 0.9], args: [0.12, 16, 16] },
+  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.30, -0.7, 0.9], args: [0.11, 16, 16] },
+  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.30, -0.7, 0.9], args: [0.11, 16, 16] },
   
   // -- Lower Abdomen --
-  { name: "Hypogastric (Bladder/Uterus)", type: "sphere", position: [0, 0.25, 0.24], args: [0.12, 16, 16] },
-  { name: "Right Iliac (Appendix/Ovary)", type: "sphere", position: [-0.28, 0.25, 0.22], args: [0.11, 16, 16] },
-  { name: "Left Iliac (Colon/Ovary)", type: "sphere", position: [0.28, 0.25, 0.22], args: [0.11, 16, 16] },
+  { name: "Hypogastric (Bladder/Uterus)", type: "sphere", position: [0, -1.2, 0.9], args: [0.12, 16, 16] },
+  { name: "Right Iliac (Appendix/Ovary)", type: "sphere", position: [-0.28, -1.2, 0.9], args: [0.11, 16, 16] },
+  { name: "Left Iliac (Colon/Ovary)", type: "sphere", position: [0.28, -1.2, 0.9], args: [0.11, 16, 16] },
+
+  // -- Back --
+  { name: "Upper Back", type: "sphere", position: [0, 0.6, -0.9], args: [0.12, 16, 16] },
+  { name: "Middle Back", type: "sphere", position: [0, 0.2, -0.9], args: [0.12, 16, 16] },
+  { name: "Lower Back", type: "sphere", position: [0, -0.2, -0.9], args: [0.12, 16, 16] },
 ];
 
 // ==========================================
@@ -114,6 +150,118 @@ export const HEAD_POINTS: BodyPartConfig[] = [
   { name: "Left Posterolateral Neck", type: "sphere", position: [0.68, -0.84, -0.82], args: [0.06, 16, 16] },
   { name: "Right Lateral Neck", type: "sphere", position: [-0.6, -1.08, -0.22], args: [0.06, 16, 16] },
   { name: "Left Lateral Neck", type: "sphere", position: [0.6, -1.08, -0.22], args: [0.06, 16, 16] },
+];
+
+// ==========================================
+// 4. LEFT ARM CONFIGURATION
+// ==========================================
+
+export const MALE_LEFT_ARM_PARTS: BodyPartConfig[] = [
+  // 1. Upper Arm (Shoulder to Elbow)
+  { name: "Deltoid (Shoulder Muscle)", type: "sphere", position: [0.02, 1.6, 0.2], args: [0.08, 16, 16] },
+  { name: "Biceps Brachii (Front Arm)", type: "sphere", position: [-0.1, 0.8, 0.1], args: [0.07, 16, 16] },
+  { name: "Triceps Brachii (Back Arm)", type: "sphere", position: [0.3, 0.9, 0], args: [0.07, 16, 16] },
+  { name: "Axilla (Armpit)", type: "sphere", position: [0.2, 1.3, 0], args: [0.06, 16, 16] },
+  
+  // 2. Elbow Region
+  { name: "Lateral Epicondyle (Outer Elbow)", type: "sphere", position: [-0.1, 0.4, -0.1], args: [0.05, 16, 16] },
+  { name: "Medial Epicondyle (Inner Elbow)", type: "sphere", position: [0.3, 0.5, -0.2], args: [0.05, 16, 16] },
+  { name: "Olecranon (Elbow Tip)", type: "sphere", position: [0.3, 0.5, -0.1], args: [0.05, 16, 16] },
+  { name: "Cubital Fossa (Inner Fold)", type: "sphere", position: [0.2, 0.4, 0], args: [0.05, 16, 16] },
+  
+  // 3. Forearm & Wrist
+  { name: "Volar Forearm (Inner Forearm)", type: "sphere", position: [-0.1, -0.1, -0.1], args: [0.06, 16, 16] },
+  { name: "Dorsal Forearm (Outer Forearm)", type: "sphere", position: [0.3, -0.1, -0.2], args: [0.06, 16, 16] },
+  { name: "Carpal Region (Wrist Front)", type: "sphere", position: [-0.1, -0.5, -0.1], args: [0.05, 16, 16] },
+  { name: "Dorsal Carpal (Wrist Back)", type: "sphere", position: [0.3, -0.5, -0.1], args: [0.05, 16, 16] },
+  
+  // 4. Hand & Fingers
+  { name: "Thenar Eminence (Thumb Base)", type: "sphere", position: [-0.2, -0.8, 0.3], args: [0.05, 16, 16] },
+  { name: "Metacarpals (Back of Hand)", type: "sphere", position: [0.2, -0.9, -0.1], args: [0.05, 16, 16] },
+  { name: "Palmar Region (Palm Center)", type: "sphere", position: [0.1, -0.8, -0.2], args: [0.05, 16, 16] },
+  { name: "Phalanges (Fingers)", type: "sphere", position: [-0.1, -1.3, -0.1], args: [0.05, 16, 16] },
+];
+
+export const FEMALE_LEFT_ARM_PARTS: BodyPartConfig[] = [
+  // 1. Upper Arm (Shoulder to Elbow)
+  { name: "Deltoid (Shoulder Muscle)", type: "sphere", position: [0.02, 1.6, 0.2], args: [0.07, 16, 16] },
+  { name: "Biceps Brachii (Front Arm)", type: "sphere", position: [-0.1, 0.8, 0.1], args: [0.06, 16, 16] },
+  { name: "Triceps Brachii (Back Arm)", type: "sphere", position: [0.3, 0.9, 0], args: [0.06, 16, 16] },
+  { name: "Axilla (Armpit)", type: "sphere", position: [0.2, 1.3, 0], args: [0.05, 16, 16] },
+  
+  // 2. Elbow Region
+  { name: "Lateral Epicondyle (Outer Elbow)", type: "sphere", position: [-0.1, 0.4, -0.1], args: [0.05, 16, 16] },
+  { name: "Medial Epicondyle (Inner Elbow)", type: "sphere", position: [0.3, 0.5, -0.2], args: [0.05, 16, 16] },
+  { name: "Olecranon (Elbow Tip)", type: "sphere", position: [0.3, 0.5, -0.1], args: [0.05, 16, 16] },
+  { name: "Cubital Fossa (Inner Fold)", type: "sphere", position: [0.2, 0.4, 0], args: [0.05, 16, 16] },
+  
+  // 3. Forearm & Wrist
+  { name: "Volar Forearm (Inner Forearm)", type: "sphere", position: [-0.1, -0.1, -0.1], args: [0.05, 16, 16] },
+  { name: "Dorsal Forearm (Outer Forearm)", type: "sphere", position: [0.3, -0.1, -0.2], args: [0.05, 16, 16] },
+  { name: "Carpal Region (Wrist Front)", type: "sphere", position: [-0.1, -0.5, -0.1], args: [0.05, 16, 16] },
+  { name: "Dorsal Carpal (Wrist Back)", type: "sphere", position: [0.3, -0.5, -0.1], args: [0.05, 16, 16] },
+  
+  // 4. Hand & Fingers
+  { name: "Thenar Eminence (Thumb Base)", type: "sphere", position: [-0.2, -0.8, 0.3], args: [0.05, 16, 16] },
+  { name: "Metacarpals (Back of Hand)", type: "sphere", position: [0.2, -0.9, -0.1], args: [0.05, 16, 16] },
+  { name: "Palmar Region (Palm Center)", type: "sphere", position: [0.1, -0.8, -0.2], args: [0.05, 16, 16] },
+  { name: "Phalanges (Fingers)", type: "sphere", position: [-0.1, -1.3, -0.1], args: [0.05, 16, 16] },
+];
+
+// ==========================================
+// 5. RIGHT ARM CONFIGURATION
+// ==========================================
+
+export const MALE_RIGHT_ARM_PARTS: BodyPartConfig[] = [
+  // 1. Upper Arm (Shoulder to Elbow)
+  { name: "Deltoid (Shoulder Muscle)", type: "sphere", position: [-0.4, 0.8, 0.2], args: [0.08, 16, 16] },
+  { name: "Biceps Brachii (Front Arm)", type: "sphere", position: [-0.5, 0.6, 0.4], args: [0.07, 16, 16] },
+  { name: "Triceps Brachii (Back Arm)", type: "sphere", position: [-0.5, 0.6, -0.2], args: [0.07, 16, 16] },
+  { name: "Axilla (Armpit)", type: "sphere", position: [-0.3, 0.9, 0], args: [0.06, 16, 16] },
+  
+  // 2. Elbow Region
+  { name: "Lateral Epicondyle (Outer Elbow)", type: "sphere", position: [-0.6, 0.2, 0.1], args: [0.05, 16, 16] },
+  { name: "Medial Epicondyle (Inner Elbow)", type: "sphere", position: [-0.6, 0.2, -0.1], args: [0.05, 16, 16] },
+  { name: "Olecranon (Elbow Tip)", type: "sphere", position: [-0.6, 0.1, -0.2], args: [0.05, 16, 16] },
+  { name: "Cubital Fossa (Inner Fold)", type: "sphere", position: [-0.6, 0.3, 0], args: [0.05, 16, 16] },
+  
+  // 3. Forearm & Wrist
+  { name: "Volar Forearm (Inner Forearm)", type: "sphere", position: [-0.8, -0.1, 0.2], args: [0.06, 16, 16] },
+  { name: "Dorsal Forearm (Outer Forearm)", type: "sphere", position: [-0.8, -0.1, -0.2], args: [0.06, 16, 16] },
+  { name: "Carpal Region (Wrist Front)", type: "sphere", position: [-1.0, -0.4, 0.1], args: [0.05, 16, 16] },
+  { name: "Dorsal Carpal (Wrist Back)", type: "sphere", position: [-1.0, -0.4, -0.1], args: [0.05, 16, 16] },
+  
+  // 4. Hand & Fingers
+  { name: "Thenar Eminence (Thumb Base)", type: "sphere", position: [-1.1, -0.6, 0.3], args: [0.05, 16, 16] },
+  { name: "Metacarpals (Back of Hand)", type: "sphere", position: [-1.2, -0.7, -0.1], args: [0.05, 16, 16] },
+  { name: "Palmar Region (Palm Center)", type: "sphere", position: [-1.2, -0.7, 0.1], args: [0.05, 16, 16] },
+  { name: "Phalanges (Fingers)", type: "sphere", position: [-1.3, -0.8, 0], args: [0.05, 16, 16] },
+];
+
+export const FEMALE_RIGHT_ARM_PARTS: BodyPartConfig[] = [
+  // 1. Upper Arm (Shoulder to Elbow)
+  { name: "Deltoid (Shoulder Muscle)", type: "sphere", position: [-0.4, 0.8, 0.2], args: [0.07, 16, 16] },
+  { name: "Biceps Brachii (Front Arm)", type: "sphere", position: [-0.5, 0.6, 0.4], args: [0.06, 16, 16] },
+  { name: "Triceps Brachii (Back Arm)", type: "sphere", position: [-0.5, 0.6, -0.2], args: [0.06, 16, 16] },
+  { name: "Axilla (Armpit)", type: "sphere", position: [-0.3, 0.9, 0], args: [0.05, 16, 16] },
+  
+  // 2. Elbow Region
+  { name: "Lateral Epicondyle (Outer Elbow)", type: "sphere", position: [-0.6, 0.2, 0.1], args: [0.05, 16, 16] },
+  { name: "Medial Epicondyle (Inner Elbow)", type: "sphere", position: [-0.6, 0.2, -0.1], args: [0.05, 16, 16] },
+  { name: "Olecranon (Elbow Tip)", type: "sphere", position: [-0.6, 0.1, -0.2], args: [0.05, 16, 16] },
+  { name: "Cubital Fossa (Inner Fold)", type: "sphere", position: [-0.6, 0.3, 0], args: [0.05, 16, 16] },
+  
+  // 3. Forearm & Wrist
+  { name: "Volar Forearm (Inner Forearm)", type: "sphere", position: [-0.8, -0.1, 0.2], args: [0.05, 16, 16] },
+  { name: "Dorsal Forearm (Outer Forearm)", type: "sphere", position: [-0.8, -0.1, -0.2], args: [0.05, 16, 16] },
+  { name: "Carpal Region (Wrist Front)", type: "sphere", position: [-1.0, -0.4, 0.1], args: [0.05, 16, 16] },
+  { name: "Dorsal Carpal (Wrist Back)", type: "sphere", position: [-1.0, -0.4, -0.1], args: [0.05, 16, 16] },
+  
+  // 4. Hand & Fingers
+  { name: "Thenar Eminence (Thumb Base)", type: "sphere", position: [-1.1, -0.6, 0.3], args: [0.05, 16, 16] },
+  { name: "Metacarpals (Back of Hand)", type: "sphere", position: [-1.2, -0.7, -0.1], args: [0.05, 16, 16] },
+  { name: "Palmar Region (Palm Center)", type: "sphere", position: [-1.2, -0.7, 0.1], args: [0.05, 16, 16] },
+  { name: "Phalanges (Fingers)", type: "sphere", position: [-1.3, -0.8, 0], args: [0.05, 16, 16] },
 ];
 
 // ==========================================
@@ -371,6 +519,33 @@ export const BodyModel: React.FC<BodyModelProps> = ({
           />
         ))}
 
+        {/* 4. Left Arm View */}
+        {viewMode === "left-hand" && (gender === "male" ? MALE_LEFT_ARM_PARTS : FEMALE_LEFT_ARM_PARTS).map((part) => (
+          <BodyPart
+            key={part.name}
+            position={part.position}
+            args={part.args as [number, number, number] | [number, number, number, number]}
+            name={part.name}
+            type={part.type}
+            rotation={part.rotation}
+            onSelect={onSelectPart}
+            selectedPart={selectedPart}
+          />
+        ))}
+
+        {/* 5. Right Arm View */}
+        {viewMode === "right-hand" && (gender === "male" ? MALE_RIGHT_ARM_PARTS : FEMALE_RIGHT_ARM_PARTS).map((part) => (
+          <BodyPart
+            key={part.name}
+            position={part.position}
+            args={part.args as [number, number, number] | [number, number, number, number]}
+            name={part.name}
+            type={part.type}
+            rotation={part.rotation}
+            onSelect={onSelectPart}
+            selectedPart={selectedPart}
+          />
+        ))}
       </group>
     </group>
   );
