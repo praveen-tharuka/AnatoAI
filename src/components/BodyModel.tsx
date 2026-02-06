@@ -37,27 +37,7 @@ export const FEMALE_BODY_PARTS: BodyPartConfig[] = [
   { name: "Right Leg", type: "capsule", position: [-0.25, -0.55, -0.05], args: [0.14, 1.4, 4, 8] },
 ];
 
-// --- Head Parts Configuration (Male) ---
-export const MALE_HEAD_PARTS: BodyPartConfig[] = [
-  { name: "Head", type: "sphere", position: [0, 1.30, 0], args: [0.25, 64, 64] },
-  { name: "Left Eye", type: "sphere", position: [-0.39, 0.45, 0.19], args: [0.038, 16, 16] },
-  { name: "Right Eye", type: "sphere", position: [0.39, 0.45, 0.19], args: [0.038, 16, 16] },
-  { name: "Mouth", type: "box", position: [0, -0.45, 0.22], args: [0.11, 0.055, 0.075] },
-  { name: "Left Ear", type: "sphere", position: [-0.80, -0.001, 0], args: [0.095, 16, 16] },
-  { name: "Right Ear", type: "sphere", position: [0.80, -0.002, 0], args: [0.095, 16, 16] },
-  { name: "Neck", type: "capsule", position: [0, -1.20, 0], args: [0.11, 0.33, 4, 8] },
-];
 
-// --- Head Parts Configuration (Female) ---
-export const FEMALE_HEAD_PARTS: BodyPartConfig[] = [
-  { name: "Head", type: "sphere", position: [0, 1.25, 0], args: [0.24, 64, 64] },
-  { name: "Left Eye", type: "sphere", position: [-0.38, 0.60, 0.18], args: [0.036, 16, 16] },
-  { name: "Right Eye", type: "sphere", position: [0.38, 0.60, 0.18], args: [0.036, 16, 16] },
-  { name: "Mouth", type: "box", position: [0, -0.10, 0.21], args: [0.105, 0.052, 0.072] },
-  { name: "Left Ear", type: "sphere", position: [-0.77, 0.20, 0], args: [0.09, 16, 16] },
-  { name: "Right Ear", type: "sphere", position: [0.77, 0.20, 0], args: [0.09, 16, 16] },
-  { name: "Neck", type: "capsule", position: [0, -1.00, 0], args: [0.105, 0.315, 4, 8] },
-];
 
 // ==========================================
 // 2. TORSO CONFIGURATION (Fixed Depth)
@@ -151,9 +131,9 @@ export const FEMALE_TORSO_PARTS: BodyPartConfig[] = [
 // 3. HEAD CONFIGURATION
 // ==========================================
 
-export const HEAD_POINTS: BodyPartConfig[] = [
+export const MALE_HEAD_PARTS: BodyPartConfig[] = [
   { name: "Frontal Vertex", type: "sphere", position: [0, 1.4, 0.7], args: [0.06, 16, 16] },
-  { name: "Central Vertex (Crown)", type: "sphere", position: [0, 1.6, 0], args: [0.06, 16, 16] },
+  { name: "Central Vertex (Crown)", type: "sphere", position: [0, 1.67, 0], args: [0.06, 16, 16] },
   { name: "Right Parietal Region", type: "sphere", position: [-0.64, 1.4, 0], args: [0.06, 16, 16] },
   { name: "Left Parietal Region", type: "sphere", position: [0.64, 1.4, 0], args: [0.06, 16, 16] },
   { name: "Central Forehead (Glabella)", type: "sphere", position: [0, 0.52, 1.03], args: [0.06, 16, 16] },
@@ -177,6 +157,34 @@ export const HEAD_POINTS: BodyPartConfig[] = [
   { name: "Left Posterolateral Neck", type: "sphere", position: [0.68, -0.84, -0.82], args: [0.06, 16, 16] },
   { name: "Right Lateral Neck", type: "sphere", position: [-0.6, -1.08, -0.22], args: [0.06, 16, 16] },
   { name: "Left Lateral Neck", type: "sphere", position: [0.6, -1.08, -0.22], args: [0.06, 16, 16] },
+];
+
+export const FEMALE_HEAD_PARTS: BodyPartConfig[] = [
+  { name: "Frontal Vertex", type: "sphere", position: [0, 1.4, 0.62], args: [0.06, 16, 16] },
+  { name: "Central Vertex (Crown)", type: "sphere", position: [0, 1.675, 0], args: [0.06, 16, 16] },
+  { name: "Right Parietal Region", type: "sphere", position: [-0.64, 1.4, 0], args: [0.06, 16, 16] },
+  { name: "Left Parietal Region", type: "sphere", position: [0.64, 1.4, 0], args: [0.06, 16, 16] },
+  { name: "Central Forehead (Glabella)", type: "sphere", position: [0, 0.72, 0.835], args: [0.06, 16, 16] },
+  { name: "Right Frontal Region", type: "sphere", position: [-0.52, 1.05, 0.52], args: [0.06, 16, 16] },
+  { name: "Left Frontal Region", type: "sphere", position: [0.52, 1.05, 0.52], args: [0.06, 16, 16] },
+  { name: "Right Supraorbital Area", type: "sphere", position: [-0.32, 0.86, 0.75], args: [0.05, 16, 16] },
+  { name: "Left Supraorbital Area", type: "sphere", position: [0.32, 0.86, 0.75], args: [0.05, 16, 16] },
+  { name: "Right Temporal Region", type: "sphere", position: [-0.66, 0.60, 0.32], args: [0.06, 16, 16] },
+  { name: "Left Temporal Region", type: "sphere", position: [0.66, 0.6, 0.32], args: [0.06, 16, 16] },
+  { name: "Right Preauricular Area", type: "sphere", position: [-0.712, 0.25, 0.06], args: [0.06, 16, 16] },
+  { name: "Left Preauricular Area", type: "sphere", position: [0.712, 0.25, 0.06], args: [0.06, 16, 16] },
+  { name: "Right Jaw Angle", type: "sphere", position: [-0.6, -0.24, 0.18], args: [0.06, 16, 16] },
+  { name: "Left Jaw Angle", type: "sphere", position: [0.6, -0.24, 0.18], args: [0.06, 16, 16] },
+  { name: "Upper Lip / Maxillary", type: "sphere", position: [0, 0.1, 0.995], args: [0.05, 16, 16] },
+  { name: "Chin (Mental Region)", type: "sphere", position: [0.01, -0.46, 0.88], args: [0.06, 16, 16] },
+  { name: "Right Occipital Region", type: "sphere", position: [-0.58, -0.3, -0.48], args: [0.06, 16, 16] },
+  { name: "Left Occipital Region", type: "sphere", position: [0.58, -0.3, -0.48], args: [0.06, 16, 16] },
+  { name: "Central Occipital", type: "sphere", position: [0, -0.35, -0.78], args: [0.06, 16, 16] },
+  { name: "Posterior Neck (Midline)", type: "sphere", position: [0, -0.78, -0.88], args: [0.06, 16, 16] },
+  { name: "Right Posterolateral Neck", type: "sphere", position: [-0.555, -0.84, -0.5], args: [0.06, 16, 16] },
+  { name: "Left Posterolateral Neck", type: "sphere", position: [0.555, -0.84, -0.5], args: [0.06, 16, 16] },
+  { name: "Right Lateral Neck", type: "sphere", position: [-0.48, -1, -0.1], args: [0.06, 16, 16] },
+  { name: "Left Lateral Neck", type: "sphere", position: [0.48, -1, -0.1], args: [0.06, 16, 16] },
 ];
 
 // ==========================================
@@ -519,7 +527,7 @@ export const BodyModel: React.FC<BodyModelProps> = ({
         ))}
 
         {/* 2. Head View */}
-        {viewMode === "head" && HEAD_POINTS.map((part) => (
+        {viewMode === "head" && (gender === "male" ? MALE_HEAD_PARTS : FEMALE_HEAD_PARTS).map((part) => (
           <BodyPart
             key={part.name}
             position={part.position}
