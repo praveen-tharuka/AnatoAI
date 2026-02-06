@@ -64,60 +64,87 @@ export const FEMALE_HEAD_PARTS: BodyPartConfig[] = [
 // ==========================================
 
 export const MALE_TORSO_PARTS: BodyPartConfig[] = [
-  // -- Chest --
-  // Z moved to 0.3 to sit on top of pecs
-  { name: "Pectorals (Chest)", type: "box", position: [0, 0.50, 0.9], args: [0.5, 0.25, 0.15] },
-  { name: "Sternum (Center)", type: "box", position: [0, 0.30, 0.9], args: [0.1, 0.25, 0.1] },
-  { name: "Right Shoulder", type: "sphere", position: [-0.4, 1.1, 0.9], args: [0.1, 16, 16] },
-  { name: "Left Shoulder", type: "sphere", position: [0.4, 1.1, 0.9], args: [0.1, 16, 16] },
-  
-  // -- Upper Abdomen --
-  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, -0.1, 0.9], args: [0.13, 16, 16] },
-  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.28, -0.1, 0.9], args: [0.12, 16, 16] },
-  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.28, -0.1, 0.9], args: [0.12, 16, 16] },
-  
-  // -- Middle Abdomen --
-  { name: "Umbilical (Navel)", type: "sphere", position: [0, -0.9, 0.9], args: [0.13, 16, 16] },
-  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.30, -0.60, 0.9], args: [0.12, 16, 16] },
-  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.30, -0.60, 0.9], args: [0.12, 16, 16] },
-  
-  // -- Lower Abdomen --
-  { name: "Hypogastric (Bladder)", type: "sphere", position: [0, -1.25, 0.9], args: [0.13, 16, 16] },
-  { name: "Right Iliac (Appendix)", type: "sphere", position: [-0.28, -1.20, 0.9], args: [0.12, 16, 16] },
-  { name: "Left Iliac (Colon)", type: "sphere", position: [0.28, -1.20, 0.9], args: [0.12, 16, 16] },
+  // --- FRONT TORSO (ANTERIOR) ---
+  { name: "Left Clavicle (Left Collarbone Area)", type: "sphere", position: [0.5, 1.2, 0.18], args: [0.08, 16, 16] },
+  { name: "Right Clavicle (Right Collarbone Area)", type: "sphere", position: [-0.5, 1.2, 0.18], args: [0.08, 16, 16] },
+  { name: "Left Acromioclavicular Joint (Left Shoulder Tip)", type: "sphere", position: [0.60, 1.37, -0.2], args: [0.08, 16, 16] },
+  { name: "Right Acromioclavicular Joint (Right Shoulder Tip)", type: "sphere", position: [-0.6, 1.37, -0.2], args: [0.08, 16, 16] },
+  { name: "Sternum (Central Chest)", type: "sphere", position: [0, 0.4, 0.66], args: [0.09, 16, 16] },
+  { name: "Left Pectoralis Major (Left Chest Muscle)", type: "sphere", position: [0.48, 0.65, 0.62], args: [0.09, 16, 16] },
+  { name: "Right Pectoralis Major (Right Chest Muscle)", type: "sphere", position: [-0.48, 0.65, 0.62], args: [0.09, 16, 16] },
+  { name: "Left Costochondral Region (Left Rib–Sternum Junction)", type: "sphere", position: [0.32, 0.05, 0.7], args: [0.07, 16, 16] },
+  { name: "Right Costochondral Region (Right Rib–Sternum Junction)", type: "sphere", position: [-0.32, 0.05, 0.7], args: [0.07, 16, 16] },
+  { name: "Left Costal Margin (Left Lower Rib Edge)", type: "sphere", position: [0.38, -0.3, 0.65], args: [0.08, 16, 16] },
+  { name: "Right Costal Margin (Right Lower Rib Edge)", type: "sphere", position: [-0.38, -0.3, 0.65], args: [0.08, 16, 16] },
+  { name: "Rectus Abdominis (Upper) (Upper Abdominal Wall)", type: "sphere", position: [0, -0.38, 0.72], args: [0.09, 16, 16] },
+  { name: "Umbilicus (Navel Region)", type: "sphere", position: [0, -0.9, 0.72], args: [0.08, 16, 16] },
+  { name: "Rectus Abdominis (Lower) (Lower Abdominal Wall)", type: "sphere", position: [0, -1.2, 0.73], args: [0.09, 16, 16] },
+  { name: "Left Inguinal Region (Left Groin Surface)", type: "sphere", position: [0.42, -1.3, 0.58], args: [0.08, 16, 16] },
+  { name: "Right Inguinal Region (Right Groin Surface)", type: "sphere", position: [-0.42, -1.3, 0.58], args: [0.08, 16, 16] },
 
-  // -- Back --
-  { name: "Upper Back", type: "sphere", position: [0, 0.6, -0.9], args: [0.12, 16, 16] },
-  { name: "Middle Back", type: "sphere", position: [0, 0.2, -0.9], args: [0.12, 16, 16] },
-  { name: "Lower Back", type: "sphere", position: [0, -0.2, -0.9], args: [0.12, 16, 16] },
+  // --- SIDE TORSO (LATERAL) ---
+  { name: "Left Intercostal Region (Left Side Rib Area)", type: "sphere", position: [0.76, 0.05, 0.1], args: [0.08, 16, 16] },
+  { name: "Right Intercostal Region (Right Side Rib Area)", type: "sphere", position: [-0.76, 0.05, 0.1], args: [0.08, 16, 16] },
+  { name: "Left External Oblique (Left Waist Side Muscle)", type: "sphere", position: [0.7, -0.4, 0.2], args: [0.08, 16, 16] },
+  { name: "Right External Oblique (Right Waist Side Muscle)", type: "sphere", position: [-0.7, -0.4, 0.2], args: [0.08, 16, 16] },
+  { name: "Left Iliac Crest (Left Hip Crest)", type: "sphere", position: [0.72, -0.98, 0.2], args: [0.08, 16, 16] },
+  { name: "Right Iliac Crest (Right Hip Crest)", type: "sphere", position: [-0.72, -0.98, 0.2], args: [0.08, 16, 16] },
+
+  // --- BACK TORSO (POSTERIOR) ---
+  { name: "Left Trapezius (Left Upper Back Shoulder Area)", type: "sphere", position: [0.6, 1.2, -0.5], args: [0.08, 16, 16] },
+  { name: "Right Trapezius (Right Upper Back Shoulder Area)", type: "sphere", position: [-0.6, 1.2, -0.5], args: [0.08, 16, 16] },
+  { name: "Left Scapular Region (Left Shoulder Blade Area)", type: "sphere", position: [0.65, 0.68, -0.72], args: [0.09, 16, 16] },
+  { name: "Right Scapular Region (Right Shoulder Blade Area)", type: "sphere", position: [-0.65, 0.68, -0.72], args: [0.09, 16, 16] },
+  { name: "Left Thoracic Paraspinal Muscles (Left Mid-Back)", type: "sphere", position: [0.14, 0.2, -0.68], args: [0.08, 16, 16] },
+  { name: "Right Thoracic Paraspinal Muscles (Right Mid-Back)", type: "sphere", position: [-0.14, 0.2, -0.68], args: [0.08, 16, 16] },
+  { name: "Left Lumbar Paraspinal Muscles (Left Lower Back)", type: "sphere", position: [0.14, -0.3, -0.49], args: [0.08, 16, 16] },
+  { name: "Right Lumbar Paraspinal Muscles (Right Lower Back)", type: "sphere", position: [-0.14, -0.3, -0.49], args: [0.08, 16, 16] },
+  { name: "Lumbar Spine (Central Lower Back)", type: "sphere", position: [0, -0.74, -0.36], args: [0.08, 16, 16] },
+  { name: "Left Sacroiliac Joint Region (Left Lower Back–Hip Junction)", type: "sphere", position: [0.16, -1.12, -0.51], args: [0.08, 16, 16] },
+  { name: "Right Sacroiliac Joint Region (Right Lower Back–Hip Junction)", type: "sphere", position: [-0.16, -1.12, -0.51], args: [0.08, 16, 16] },
 ];
 
 export const FEMALE_TORSO_PARTS: BodyPartConfig[] = [
-  // -- Chest --
-  { name: "Breasts (Chest)", type: "box", position: [0, 0.50, 0.9], args: [0.45, 0.22, 0.15] },
-  { name: "Sternum (Center)", type: "box", position: [0, 0.30, 0.9], args: [0.08, 0.22, 0.1] },
-  { name: "Right Shoulder", type: "sphere", position: [-0.4, 1.1, 0.5], args: [0.1, 16, 16] },
-  { name: "Left Shoulder", type: "sphere", position: [0.4, 1.1, 0.5], args: [0.1, 16, 16] },
-  
-  // -- Upper Abdomen --
-  { name: "Epigastric (Upper Stomach)", type: "sphere", position: [0, -0.10, 0.9], args: [0.12, 16, 16] },
-  { name: "Right Hypochondriac (Liver)", type: "sphere", position: [-0.28, -0.10, 0.9], args: [0.11, 16, 16] },
-  { name: "Left Hypochondriac (Spleen)", type: "sphere", position: [0.28, -0.10, 0.9], args: [0.11, 16, 16] },
-  
-  // -- Middle Abdomen --
-  { name: "Umbilical (Navel)", type: "sphere", position: [0, -0.8, 0.9], args: [0.12, 16, 16] },
-  { name: "Right Lumbar (Kidney/Flank)", type: "sphere", position: [-0.30, -0.7, 0.9], args: [0.11, 16, 16] },
-  { name: "Left Lumbar (Kidney/Flank)", type: "sphere", position: [0.30, -0.7, 0.9], args: [0.11, 16, 16] },
-  
-  // -- Lower Abdomen --
-  { name: "Hypogastric (Bladder/Uterus)", type: "sphere", position: [0, -1.2, 0.9], args: [0.12, 16, 16] },
-  { name: "Right Iliac (Appendix/Ovary)", type: "sphere", position: [-0.28, -1.2, 0.9], args: [0.11, 16, 16] },
-  { name: "Left Iliac (Colon/Ovary)", type: "sphere", position: [0.28, -1.2, 0.9], args: [0.11, 16, 16] },
+  // --- FRONT TORSO (ANTERIOR) ---
+  { name: "Left Clavicle (Left Collarbone Area)", type: "sphere", position: [0.38, 1.24, 0.0], args: [0.08, 16, 16] },
+  { name: "Right Clavicle (Right Collarbone Area)", type: "sphere", position: [-0.38, 1.24, 0.0], args: [0.08, 16, 16] },
+  { name: "Left Acromioclavicular Joint (Left Shoulder Tip)", type: "sphere", position: [0.52, 1.32, -0.24], args: [0.08, 16, 16] },
+  { name: "Right Acromioclavicular Joint (Right Shoulder Tip)", type: "sphere", position: [-0.52, 1.32, -0.24], args: [0.08, 16, 16] },
+  { name: "Sternum (Central Chest)", type: "sphere", position: [0, 0.5, 0.51], args: [0.08, 16, 16] },
+  { name: "Left Pectoralis Major (Upper Breast Area)", type: "sphere", position: [0.4, 0.52, 0.62], args: [0.09, 16, 16] },
+  { name: "Right Pectoralis Major (Upper Breast Area)", type: "sphere", position: [-0.4, 0.52, 0.62], args: [0.09, 16, 16] },
+  { name: "Left Costochondral Region (Left Rib–Sternum Junction)", type: "sphere", position: [0.1, 0.1, 0.55], args: [0.07, 16, 16] },
+  { name: "Right Costochondral Region (Right Rib–Sternum Junction)", type: "sphere", position: [-0.1, 0.1, 0.55], args: [0.07, 16, 16] },
+  { name: "Left Inframammary Fold (Lower Breast Fold)", type: "sphere", position: [0.5, 0.15, 0.65], args: [0.08, 16, 16] },
+  { name: "Right Inframammary Fold (Lower Breast Fold)", type: "sphere", position: [-0.5, 0.15, 0.65], args: [0.08, 16, 16] },
+  { name: "Left Costal Margin (Left Lower Rib Edge)", type: "sphere", position: [0.34, -0.3, 0.46], args: [0.08, 16, 16] },
+  { name: "Right Costal Margin (Right Lower Rib Edge)", type: "sphere", position: [-0.34, -0.3, 0.46], args: [0.08, 16, 16] },
+  { name: "Rectus Abdominis (Upper) (Upper Abdominal Wall)", type: "sphere", position: [0, -0.42, 0.51], args: [0.09, 16, 16] },
+  { name: "Umbilicus (Navel Region)", type: "sphere", position: [0, -0.74, 0.5], args: [0.08, 16, 16] },
+  { name: "Rectus Abdominis (Lower) (Lower Abdominal Wall)", type: "sphere", position: [0, -1, 0.51], args: [0.09, 16, 16] },
+  { name: "Left Inguinal Region (Left Groin Surface)", type: "sphere", position: [0.25, -1.3, 0.36], args: [0.08, 16, 16] },
+  { name: "Right Inguinal Region (Right Groin Surface)", type: "sphere", position: [-0.25, -1.3, 0.36], args: [0.08, 16, 16] },
 
-  // -- Back --
-  { name: "Upper Back", type: "sphere", position: [0, 0.6, -0.9], args: [0.12, 16, 16] },
-  { name: "Middle Back", type: "sphere", position: [0, 0.2, -0.9], args: [0.12, 16, 16] },
-  { name: "Lower Back", type: "sphere", position: [0, -0.2, -0.9], args: [0.12, 16, 16] },
+  // --- SIDE TORSO (LATERAL) ---
+  { name: "Left Intercostal Region (Left Side Rib Area)", type: "sphere", position: [0.63, 0.2, 0.01], args: [0.08, 16, 16] },
+  { name: "Right Intercostal Region (Right Side Rib Area)", type: "sphere", position: [-0.63, 0.2, 0.01], args: [0.08, 16, 16] },
+  { name: "Left External Oblique (Left Waist Side Muscle)", type: "sphere", position: [0.565, -0.3, 0.05], args: [0.08, 16, 16] },
+  { name: "Right External Oblique (Right Waist Side Muscle)", type: "sphere", position: [-0.565, -0.3, 0.05], args: [0.08, 16, 16] },
+  { name: "Left Iliac Crest (Left Hip Crest)", type: "sphere", position: [0.705, -0.86, 0.04], args: [0.08, 16, 16] },
+  { name: "Right Iliac Crest (Right Hip Crest)", type: "sphere", position: [-0.705, -0.86, 0.04], args: [0.08, 16, 16] },
+
+  // --- BACK TORSO (POSTERIOR) ---
+  { name: "Left Trapezius (Left Upper Back Shoulder Area)", type: "sphere", position: [0.52, 1.1, -0.62], args: [0.08, 16, 16] },
+  { name: "Right Trapezius (Right Upper Back Shoulder Area)", type: "sphere", position: [-0.52, 1.1, -0.62], args: [0.08, 16, 16] },
+  { name: "Left Scapular Region (Left Shoulder Blade Area)", type: "sphere", position: [0.35, 0.56, -0.71], args: [0.09, 16, 16] },
+  { name: "Right Scapular Region (Right Shoulder Blade Area)", type: "sphere", position: [-0.35, 0.56, -0.71], args: [0.09, 16, 16] },
+  { name: "Left Thoracic Paraspinal Muscles (Left Mid-Back)", type: "sphere", position: [0.12, 0.2, -0.58], args: [0.08, 16, 16] },
+  { name: "Right Thoracic Paraspinal Muscles (Right Mid-Back)", type: "sphere", position: [-0.12, 0.2, -0.58], args: [0.08, 16, 16] },
+  { name: "Left Lumbar Paraspinal Muscles (Left Lower Back)", type: "sphere", position: [0.12, -0.35, -0.42], args: [0.08, 16, 16] },
+  { name: "Right Lumbar Paraspinal Muscles (Right Lower Back)", type: "sphere", position: [-0.12, -0.35, -0.42], args: [0.08, 16, 16] },
+  { name: "Lumbar Spine (Central Lower Back)", type: "sphere", position: [0, -0.6, -0.41], args: [0.08, 16, 16] },
+  { name: "Left Sacroiliac Joint Region (Left Lower Back–Hip Junction)", type: "sphere", position: [0.18, -0.96, -0.64], args: [0.08, 16, 16] },
+  { name: "Right Sacroiliac Joint Region (Right Lower Back–Hip Junction)", type: "sphere", position: [-0.18, -0.96, -0.64], args: [0.08, 16, 16] },
 ];
 
 // ==========================================
