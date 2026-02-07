@@ -1,0 +1,22 @@
+[build]
+  command = "npm run build"
+  functions = "netlify/functions"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["three", "@react-three/fiber", "@react-three/drei"]
+
+# API route rewriting for Next.js
+[[redirect]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
