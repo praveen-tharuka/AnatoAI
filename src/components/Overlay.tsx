@@ -106,7 +106,7 @@ export default function Overlay({ selectedPart, onClose, gender }: OverlayProps)
             <div className="flex items-center gap-3">
               <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-blue-500/20 bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center shrink-0">
                 <Image 
-                  src="/Asset-2.png" 
+                  src="/anatoailogo.svg" 
                   alt="AnatoAI Logo" 
                   fill
                   className="object-contain p-1.5"

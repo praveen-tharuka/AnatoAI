@@ -46,7 +46,7 @@ export default function AppPage() {
           <Link href="/landing" className="flex items-center gap-4 cursor-pointer">
             <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg shadow-blue-500/30 bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
               <Image 
-                src="/Asset-2.png" 
+                src="/anatoailogo.svg" 
                 alt="AnatoAI Logo" 
                 fill
                 className="object-contain p-2"
